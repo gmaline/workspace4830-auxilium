@@ -1,0 +1,24 @@
+@charset "ISO-8859-1";
+body {
+	background-color: #FFFFFF;
+	color: #023047;
+	line-height:30px;
+	object-position: center;
+	text-align: center;
+}
+h1 {
+	background-color: #023047;
+	color: white;
+	font-family: Arial;
+	text-align:center;
+	height: 100px;
+	line-height: 100px;
+}
+nav {
+	background-color: #DEF0F8;
+	color: #023047;
+	height:300px;
+    width:300px;
+	line-height: 30px;
+	float:left;
+}
