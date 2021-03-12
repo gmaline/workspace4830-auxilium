@@ -1,4 +1,5 @@
 @charset "ISO-8859-1";
+
 body {
 	background-color: #FFFFFF;
 	color: #023047;
@@ -18,7 +19,8 @@ nav {
 	background-color: #DEF0F8;
 	color: #023047;
 	height:300px;
-    width:300px;
+    width:25%;
 	line-height: 30px;
 	float:left;
 }
+
