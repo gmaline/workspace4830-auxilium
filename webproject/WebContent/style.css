@@ -23,4 +23,12 @@ nav {
 	line-height: 30px;
 	float:left;
 }
+section {
+	background-color: #FFFFFF;
+	color: #023047;
+	line-height:30px;
+	object-position: left;
+	text-align: left;
+    float:left;	 	 
+}
 
