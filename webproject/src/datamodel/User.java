@@ -34,11 +34,14 @@ public class User {
 
 	@JoinColumn(name = "id")
 	private Role role;
+	
+	@JoinColumn(name = "id")
+	private Organization organization;
 
 	public User() {
 	}
 
-	public User(Integer id, String firstName, String lastName, String email, String password, Integer age, Role role) {
+	public User(Integer id, String firstName, String lastName, String email, String password, Integer age, Role role, Organization organization) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -46,15 +49,17 @@ public class User {
 		this.password = password;
 		this.age = age;
 		this.role = role;
+		this.organization = organization;
 	}
 
-	public User(String firstName, String lastName, String email, String password, Integer age, Role role) {
+	public User(String firstName, String lastName, String email, String password, Integer age, Role role, Organization organization) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.age = age;
 		this.role = role;
+		this.organization = organization;
 	}
 
 	public Integer getId() {
@@ -112,10 +117,18 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	
+	public Organization getOrganization() {
+		return organization;
+	}
+
+	public void setOrganization(Organization organization) {
+		this.organization = organization;
+	}
 
 	@Override
 	public String toString() {
-		return "User name: " + firstName + " " +  lastName + " role: " + role;
+		return "User name: " + firstName + " " +  lastName + " role: " + role + " organization: " + organization;
 	}
 
 }
