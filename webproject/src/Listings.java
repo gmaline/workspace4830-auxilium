@@ -36,14 +36,17 @@ public class Listings extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		JsonObject listing1 = new JsonObject();
+		listing1.addProperty("id", "1");
 		listing1.addProperty("name", "Markers");
-		listing1.addProperty("description", "A bunch of Crayola markers.");
+		listing1.addProperty("description", "A bunch of Crayola markers. These are great markers. Really good. The best markers, some might say. People say, I don't say that, people say they're the best markers they've ever used");
 		
 		JsonObject listing2 = new JsonObject();
+		listing2.addProperty("id", "2");
 		listing2.addProperty("name", "Calculus Textbook");
 		listing2.addProperty("description", "Textbook from a class I don't need anymore.");
 		
 		JsonObject listing3 = new JsonObject();
+		listing3.addProperty("id", "3");
 		listing3.addProperty("name", "Notebook");
 		listing3.addProperty("description", "Black college-ruled notebook. Great condition.");
 		
