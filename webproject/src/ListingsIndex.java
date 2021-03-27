@@ -17,13 +17,13 @@ import com.google.gson.JsonObject;
  * Servlet implementation class Listings
  */
 @WebServlet("/Listings")
-public class Listings extends HttpServlet {
+public class ListingsIndex extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public Listings() {
+    public ListingsIndex() {
         // TODO Auto-generated constructor stub
     }
 
