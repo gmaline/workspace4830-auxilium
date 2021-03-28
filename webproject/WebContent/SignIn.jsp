@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
+<%@ include file="Header.jsp" %>
 <title>Sign In Page</title>
-<link rel="stylesheet" href="style.css" />
 </head>
-	<div>
-	<h1>Auxilium</h1>
-	
-	</div>
 <body>
+<%@ include file="Navbar.jsp" %>
 	<main>
 	<div id="container">
 		
@@ -28,7 +21,6 @@
 		
 	</div>
 	<br/>
-	<a href="/webproject/CreateUser.html">Create an Account</a> <br>
+	<a href="/webproject/CreateUser.jsp">Create an Account</a> <br>
 	</main>
-</body>
-</html>
+<%@ include file="Footer.jsp" %>
