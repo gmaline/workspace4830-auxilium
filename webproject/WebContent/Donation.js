@@ -1,3 +1,5 @@
+console.log("js is working");
+
 function checkForm() {
   var x;
 
