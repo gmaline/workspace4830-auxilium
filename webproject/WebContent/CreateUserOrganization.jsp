@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
+<%@ include file="Header.jsp" %>
 <title>Organization User</title>
-<link rel="stylesheet" href="style.css" />
 </head>
-	<div>
-		<h1>Auxilium</h1>
-	</div>
 <body>
+<%@ include file="Navbar.jsp" %>
 	<div style="width:100%">
 		<h2 style="text-align:center">Create an Organization Account</h2>
 		
@@ -27,6 +21,5 @@
 		</form>
 		
 	</div>
-	<a href="/webproject/CreateUser.html">Back to User Types</a> <br>
-</body>
-</html>
+	<a href="/webproject/CreateUser.jsp">Back to User Types</a> <br>
+<%@ include file="Footer.jsp" %>

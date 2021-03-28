@@ -1,31 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" href="style.css" />
+<%@ include file="Header.jsp" %>
 <title>Donation</title>
 <script src="Donation.js"></script>
-<style>
-nav {
-	height:100%;
-	width:160px;
-	position: fixed;
-	left:0;
-}
-nav a{
-	display: block;
-}
-</style>
 </head>
 
 <body>
+<%@ include file="Navbar.jsp" %>
 	<h1>Create a donation</h1>
-
-	<nav id="navbar">
-		<a href="Home.hmtl">Home</a>
-		<a href="ListingsIndex.html">Listings</a>
-		<a href="Profile.html">Profile</a>
-	</nav>
 
 	<div id="bodyContent">
 		<div id="typeContainer">
@@ -88,5 +68,4 @@ nav a{
 		
 	</div>
 
-</body>
-</html>
+<%@ include file="Footer.jsp" %>

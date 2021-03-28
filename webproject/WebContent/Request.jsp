@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
+<%@ include file="Header.jsp" %>
 <title>Request Page</title>
-<link rel="stylesheet" href="style.css" />
 </head>
-	<div>
-	<h1>Make a Request</h1>
-	
-	</div>
 
-<nav>
-<a href="/webproject/ListingsIndex.html">All Listings</a> <br>
-</nav>
-	
 <body>
+<%@ include file="Navbar.jsp" %>
 	<main>
 	<div id="container">
 		
@@ -34,7 +23,5 @@
 		
 	</div>
 	</main>
-</body>
-
-</html>
+<%@ include file="Footer.jsp" %>
 

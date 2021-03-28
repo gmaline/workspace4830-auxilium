@@ -1,25 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
+<%@ include file="Header.jsp" %>
 <title>Create User</title>
-<link rel="stylesheet" href="style.css" />
 </head>
-	<div>
-		<h1>Auxilium</h1>
-	</div>
 <body>
+<%@ include file="Navbar.jsp" %>
 <main>
 	<h2 style="text-align:center">Type of User</h2>
 	<div id="container" style="width:100%">
 			
 			<div style="width:50%">
-				<a href="/webproject/CreateUserIndividual.html">
+				<a href="/webproject/CreateUserIndividual.jsp">
 				<button type=button value="Individual Use">Individual Account</button>
 				</a>
 			</div>
 			<div style="width:50%">
-				<a href="/webproject/CreateUserOrganization.html">
+				<a href="/webproject/CreateUserOrganization.jsp">
 				<button type=button>Organization Account</button>
 				</a>
 			</div>
@@ -27,7 +21,6 @@
 	</div>
 	<br/>
 
-	<a href="/webproject/SignIn.html">Already have an account? Sign In</a> <br>
+	<a href="/webproject/SignIn.jsp">Already have an account? Sign In</a> <br>
 </main>
-</body>
-</html>
+<%@ include file="Footer.jsp" %>
