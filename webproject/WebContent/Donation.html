@@ -2,54 +2,76 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <title>Donation</title>
-<script src="Donation.js"></script>
-<style>
-nav {
-	height:100%;
-	width:160px;
-	position: fixed;
-	left:0;
-}
-nav a{
-	display: block;
-}
-</style>
 </head>
 
 <body>
-	<h1>Create a donation</h1>
-
-	<nav id="navbar">
-		<a href="Home.hmtl">Home</a>
-		<a href="Listings.html">Listings</a>
-		<a href="Profile.html">Profile</a>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+	    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+	        <ul class="navbar-nav mr-auto">
+	            <li class="nav-item">
+	                <a class="nav-link" href="/webproject/Donation.html">Donations</a> 
+	            </li>
+	            <li class="nav-item">
+	                <a class="nav-link" href="#">Search</a>
+	            </li>
+	        </ul>
+	    </div>
+	    <div class="mx-auto order-0">
+	        <a class="navbar-brand mx-auto" href="/webproject/HomePage.html">Auxilium</a>
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	    </div>
+	    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+	        <ul class="navbar-nav ml-auto">
+	            <li class="nav-item">
+	                <a class="nav-link" href="/webproject/SignIn.html">Login</a>
+	            </li>
+	            <li class="nav-item">
+	                <a class="nav-link" href="#">Register</a>
+	            </li>
+	        </ul>
+	    </div>
 	</nav>
-
-	<div id="bodyContent">
-		<div id="typeContainer">
-			<h2>What type of donation are you submitting?</h2>
-			
-			<select id="type" name="type">
-				<option value="Book">Book</option>
-				<option value="Notebook">Notebook</option>
-				<option value="Pens & Pencils">Pens & Pencils</option>
-				<option value="Other">Other</option>
-			</select>
-			<button type="button" onclick="checkForm()">Next</button>
+	
+	<div class="col-4 offset-4">
+		<br><br>
+		<div class="text-center">
+			<h1>Create a donation</h1>
+			<br>
+			<div id="typeContainer">
+				<h2>What type of donation are you submitting?</h2>
+				<br>
+				<div class="row">
+					<div class="col-6 offset-1">
+						<select class="form-control" id="type" name="type">
+							<option value="Book">Book</option>
+							<option value="Notebook">Notebook</option>
+							<option value="Pens & Pencils">Pens & Pencils</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+					<div class="col-4">
+						<button type="button" class="btn btn-primary form-control" onclick="checkForm()">Next</button>
+					</div>
+				</div>
+			</div>
 		</div>
 		
-		<h2 id="submissionType" hidden></h2>
-		
-		<button id="goBack" type="button" onclick="goBack()" hidden>Back</button>
-				
+
+
+		<h2 class="text-center" id="submissionType" hidden></h2>
+		<button id="goBack" type="button" class="btn btn-primary float-right" onclick="goBack()" hidden>Go Back</button>
+		<br><br>
+			
 		<form id="formNotBook" hidden>
 			<label for="name">Name:</label>
-			<input type="text" id="name" name="name" required>
+			<input type="text" class="form-control" id="name" name="name" required>
 			<br>
 			<label for="quality">Quality:</label>
-			<select id="quality" name="quality" required>
+			<select class="form-control" id="quality" name="quality" required>
 				<option value="Like-New">Like-New</option>
 				<option value="Slightly Used">Slightly Used</option>
 				<option value="Moderately Used">Moderately Used</option>
@@ -57,23 +79,23 @@ nav a{
 			</select>
 			<br>
 			<label for="description">Description:</label>
-			<input type="text" id="description" name="description" required>
+			<textarea class="form-control" id="description" name="description" required></textarea>
 			<br>
-			<input type="submit" value="Submit">
+			<input class="btn btn-primary" type="submit" value="Submit" onclick="submitForm()">
 		</form>
 	
 		<form id="formBook" hidden>
 			<label for="title">Title:</label>
-			<input type="text" id="title" name="title" required>
+			<input type="text" class="form-control" id="title" name="title" required>
 			<br>
 			<label for="author">Author:</label>
-			<input type="text" id="author" name="author" required>
+			<input type="text" class="form-control" id="author" name="author" required>
 			<br>
 			<label for="isbn">ISBN:</label>
-			<input type="text" id="isbn" name="isbn" required>
+			<input type="text" class="form-control" id="isbn" name="isbn" required>
 			<br>
 			<label for="quality">Quality:</label>
-			<select id="quality" name="quality" required>
+			<select class="form-control" id="qualityBook" name="quality" required>
 				<option value="Like-New">Like-New</option>
 				<option value="Slightly Used">Slightly Used</option>
 				<option value="Moderately Used">Moderately Used</option>
@@ -81,12 +103,17 @@ nav a{
 			</select>
 			<br>
 			<label for="description">Description:</label>
-			<input style="width:300px; height:100px" type="text" id="description" name="description" required>
+			<textarea class="form-control" id="descriptionBook" name="description" required></textarea>
 			<br>
-			<input type="submit" value="Submit" onclick="submitForm()">
+			<input class="btn btn-primary" type="submit" value="Submit" onclick="submitForm()">
 		</form>
 		
 	</div>
-
+	<script src="Donation.js">
+	
+	</script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
