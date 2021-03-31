@@ -7,6 +7,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Search</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/webproject/Donation.jsp">Donate</a> 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/webproject/Request.jsp">Request</a>
+            </li>
         </ul>
     </div>
     <div class="mx-auto order-0">

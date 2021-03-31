@@ -4,19 +4,23 @@
 <body>
 <%@ include file="Navbar.jsp" %>
 <main>
-	<h2 style="text-align:center">Type of User</h2>
-	<div id="container" style="width:100%">
-			
-			<div style="width:50%">
-				<a href="/webproject/CreateUserIndividual.jsp">
-				<button type=button value="Individual Use">Individual Account</button>
-				</a>
-			</div>
-			<div style="width:50%">
-				<a href="/webproject/CreateUserOrganization.jsp">
-				<button type=button>Organization Account</button>
-				</a>
-			</div>
+	<div style="width:100%">
+		<h2 style="text-align:center">Create an Account</h2>
+		<br>
+		<form action="TBD" method="POST">
+			Full Name:  &nbsp;&ensp; <input type="text" name="email"> <br />
+			<br/>
+			Email:    &emsp;&ensp;&ensp;&ensp; <input type="text" name="email"> <br />
+			<br/>
+			Password: &ensp;&ensp; <input type="text" name="password"> <br />
+			<br/>
+			Organization: <input type="text" name="organization"> <br />
+			<br/>
+			Age: &emsp;&emsp;&emsp;&ensp;&nbsp; <input type="text" name="age"> <br />
+			<br/>
+			<input type="submit" value="Submit" />
+		</form>
+		
 		
 	</div>
 	<br/>
