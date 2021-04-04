@@ -34,7 +34,7 @@ public class ProfileIndividual extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //    	User user = (User) request.getUserPrincipal(); //:TODO I do not know if this will work or NOT.
     	
-    	if(true)//user.getRole().getRequest())		//If the User is with Organization, Proceed.
+    	if(true)//!user.getRole().getRequest())		//If the User is with Individual, Proceed.
     	{
 	        response.setContentType("text/html");
 	        PrintWriter out = response.getWriter();
@@ -81,9 +81,9 @@ public class ProfileIndividual extends HttpServlet {
 	              + "</html>"
 	        						);  
 	     }
-		 else //If the User is Individual, call ProfilePersonal
+		 else //If the User is Organization, call ProfileOrg
 		 {
-			 RequestDispatcher rd = request.getRequestDispatcher("ProfileIndividual");
+			 RequestDispatcher rd = request.getRequestDispatcher("ProfileOrganization");
 			 rd.forward(request,response);
 		 }
      }
