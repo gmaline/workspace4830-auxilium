@@ -12,7 +12,7 @@
 		
 		<form name="requester" action="SubmitRequest" method="POST">
 	
-		Item ID: <input type="number" id="id" name="item" required placeholder="Item ID"><br />
+		Item ID: <input type="number" min="0" id="id" name="item" required placeholder="Item ID"><br />
 		<br/>
 		<span class="error"><p id="item_error"></p></span>
 		
