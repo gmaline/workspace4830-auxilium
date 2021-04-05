@@ -111,12 +111,12 @@ public class UtilDB {
 	   }
 
    public static void createUsers(String firstName, String lastName, String email, 
-		   String password, Integer age, Role role) {  //Data Insertion
+		   String password, Integer age, Role role, Organization organization) {  //Data Insertion
       Session session = getSessionFactory().openSession();
       Transaction tx = null;
       try {
          tx = session.beginTransaction();
-         session.save(new User(firstName, lastName, email, password, age, role));
+         session.save(new User(firstName, lastName, email, password, age, role, organization));
          tx.commit();
       } catch (HibernateException e) {
          if (tx != null)
