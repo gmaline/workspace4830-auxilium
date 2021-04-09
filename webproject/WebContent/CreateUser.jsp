@@ -20,11 +20,27 @@
 			<br/>
 			Organization: <input type="text" name="organization"> <br />
 			<br/>
-			Password: &ensp;&ensp; <input type="password" name="password"> <br />
+			Password: &ensp;&ensp; <input type="password" name="password" id="input"> <br />
+			
+			<input type="checkbox" onclick="myFunction()">&ensp;Show Password
+			<script>
+			function myFunction() {
+			  var x = document.getElementById("input");
+			  if (x.type === "password") {
+			    x.type = "text";
+			  } else {
+			    x.type = "password";
+			  }
+			}
+			</script>
+			<br/>
 			<br/>
 			
 			<input type="submit" value="Submit" />
 			
+			<c:if test="${not empty error}">
+				<h3>${error}</h3>
+			</c:if>
 		</form>
 		
 		

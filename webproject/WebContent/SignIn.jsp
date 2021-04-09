@@ -9,10 +9,23 @@
 		<div style="width:100%">
 		<h2 style="text-align:center">Sign In to Your Account</h2>
 		
-		<form action="SignInUser" method="POST">
+		<form action="TBD" method="POST">
 			Email: <input type="text" name="email"> <br />
 			<br/>
-			Password: <input type="password" name="password"> <br />
+			Password: <input type="password" name="password" id="input"> <br />
+		
+			<input type="checkbox" onclick="myFunction()">&ensp;Show Password
+			<script>
+			function myFunction() {
+			  var x = document.getElementById("input");
+			  if (x.type === "password") {
+			    x.type = "text";
+			  } else {
+			    x.type = "password";
+			  }
+			}
+			</script>
+			<br/>
 			<br/>
 			<input type="submit" value="Submit" />
 		</form>
