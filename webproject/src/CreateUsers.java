@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,7 @@ import datamodel.Organization;
 import datamodel.Role;
 import datamodel.User;
 import util.UtilDB;
-
+import javax.servlet.RequestDispatcher;
 /**
  * Servlet implementation class CreateUsers
  */
@@ -47,14 +48,21 @@ public class CreateUsers extends HttpServlet {
 	      if (email != null && !email.isEmpty()) {
 	         listUsers = UtilDB.listUsers(email);
 	      }
+	     //if there is not already a user, create the User and redirect to home page.
 	      if (listUsers.isEmpty()) {
 	  		UtilDB.createUsers(firstName, lastName, email, password, age, role, organization);
+	  		response.sendRedirect(request.getContextPath() + "/HomePage.jsp");
+	  	
 	      }
+	      //if there is already a user, display an error message.
 	      else { 
-	    	  //TODO Display a "user email already exists try again" type message.
+			request.setAttribute("error", "User already exits.");
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("CreateUser.jsp");
+			dispatcher.forward(request, response);
 	      }
 
-		//TODO Direct to the home page after 
+		
 	}
 
 	/**

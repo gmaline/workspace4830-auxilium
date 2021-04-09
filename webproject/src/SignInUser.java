@@ -3,6 +3,8 @@ import datamodel.*;
 import java.util.List;
 import util.UtilDB;
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,16 +38,23 @@ public class SignInUser extends HttpServlet {
 	         listUsers = UtilDB.listUsers(email);
 	      }
 	    boolean passwordFound = false;
+	    // Check that the user matches the given password.
 	    for (User user : listUsers) {
 	    	if (user.getPassword() == password) {
 	    		passwordFound = true;
 	    	}
 	    }
+	    // Display an error if the password is not there or if the user is not there.
 	    if (!passwordFound) {
-	    	//TODO Deliver to login page + a email or password incorrect page
+	    	
+	    	request.setAttribute("error", "Username or password not correct.");
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("SignIn.jsp");
+			dispatcher.forward(request, response);
 	    }
+	    // If the password matches the user, redirct to the home page.
 	    else {
-	    	//TODO Redirect to home page.
+	    	response.sendRedirect(request.getContextPath() + "/HomePage.jsp");
 	    }
 	    	
 	     
