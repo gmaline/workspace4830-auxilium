@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +16,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "user_id")
 	private Integer id;
 
 	@Column(name = "firstName")
@@ -32,10 +34,12 @@ public class User {
 	@Column(name = "age")
 	private Integer age;
 
-	@JoinColumn(name = "id")
+	@ManyToOne
+	@JoinColumn(name = "role_id")
 	private Role role;
 	
-	@JoinColumn(name = "id")
+	@ManyToOne
+	@JoinColumn(name = "organization_id")
 	private Organization organization;
 
 	public User() {

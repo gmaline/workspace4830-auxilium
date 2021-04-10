@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 
+import datamodel.Posting;
+import util.UtilDB;
+
 /**
  * Servlet implementation class Listing
  */
@@ -36,48 +39,65 @@ public class Listing extends HttpServlet {
 		int id = Integer.valueOf(request.getParameter("id"));
 		int[] keys = {1, 2, 3};
 		
-		//Once I actually implement the back-end, this method will query the database for these values.
-		//For now, I'm just making some objects manually to look up. It's very gross and digusting and I feel bad about it.
-		JsonObject listing1 = new JsonObject();
-		listing1.addProperty("id", "1");
-		listing1.addProperty("name", "Markers");
-		listing1.addProperty("quality", "Like-New");
-		listing1.addProperty("description", "A bunch of Crayola markers. These are great markers. Really good. The best markers, some might say. People say, I don't say that, people say they're the best markers they've ever used");
-		listing1.addProperty("user", "User2021");
 		
-		JsonObject listing2 = new JsonObject();
-		listing2.addProperty("id", "2");
-		listing2.addProperty("name", "Calculus Textbook");
-		listing2.addProperty("quality", "Moderately-Used");
-		listing2.addProperty("description", "Textbook from a class I don't need anymore.");
-		listing2.addProperty("user", "user9999");
+		//Query database for ID
 		
-		JsonObject listing3 = new JsonObject();
-		listing3.addProperty("id", "3");
-		listing3.addProperty("name", "Notebook");
-		listing3.addProperty("quality", "Like-New");
-		listing3.addProperty("description", "Black college-ruled notebook. Great condition.");
-		listing3.addProperty("user", "user420blazeit");
+		Posting post = UtilDB.FindListing(id);
 		
 		String responseName = "";
 		String responseQuality = "";
 		String responseDesc = "";
 		String responseUser = "";
 		
-		JsonObject[] fakeDatabase = {listing1, listing2, listing3};
+		if (post.getId() != null) {
+			responseName = post.getName();
+			responseQuality = post.getQuality();
+			responseDesc = post.getDescription();
+			responseUser = post.getUser().getFirstName() + " " + post.getUser().getLastName();
+		}		
+		
+		//Once I actually implement the back-end, this method will query the database for these values.
+		//For now, I'm just making some objects manually to look up. It's very gross and digusting and I feel bad about it.
+//		JsonObject listing1 = new JsonObject();
+//		listing1.addProperty("id", "1");
+//		listing1.addProperty("name", "Markers");
+//		listing1.addProperty("quality", "Like-New");
+//		listing1.addProperty("description", "A bunch of Crayola markers. These are great markers. Really good. The best markers, some might say. People say, I don't say that, people say they're the best markers they've ever used");
+//		listing1.addProperty("user", "User2021");
+//		
+//		JsonObject listing2 = new JsonObject();
+//		listing2.addProperty("id", "2");
+//		listing2.addProperty("name", "Calculus Textbook");
+//		listing2.addProperty("quality", "Moderately-Used");
+//		listing2.addProperty("description", "Textbook from a class I don't need anymore.");
+//		listing2.addProperty("user", "user9999");
+//		
+//		JsonObject listing3 = new JsonObject();
+//		listing3.addProperty("id", "3");
+//		listing3.addProperty("name", "Notebook");
+//		listing3.addProperty("quality", "Like-New");
+//		listing3.addProperty("description", "Black college-ruled notebook. Great condition.");
+//		listing3.addProperty("user", "user420blazeit");
+//		
+//		String responseName = "";
+//		String responseQuality = "";
+//		String responseDesc = "";
+//		String responseUser = "";
+//		
+//		JsonObject[] fakeDatabase = {listing1, listing2, listing3};
 		
 		
-		//Query database for ID (Not implemented yet)
-		
-		for (int i = 0; i < keys.length; i++) {
-			if (id == keys[i]) {
-				responseName = fakeDatabase[i].get("name").getAsString();
-				responseQuality = fakeDatabase[i].get("quality").getAsString();
-				responseDesc = fakeDatabase[i].get("description").getAsString();
-				responseUser = fakeDatabase[i].get("user").getAsString();
-				break;
-			}
-		}
+//		//Query database for ID (Not implemented yet)
+//		
+//		for (int i = 0; i < keys.length; i++) {
+//			if (id == keys[i]) {
+//				responseName = fakeDatabase[i].get("name").getAsString();
+//				responseQuality = fakeDatabase[i].get("quality").getAsString();
+//				responseDesc = fakeDatabase[i].get("description").getAsString();
+//				responseUser = fakeDatabase[i].get("user").getAsString();
+//				break;
+//			}
+//		}
 		
 		//Send data back
 		

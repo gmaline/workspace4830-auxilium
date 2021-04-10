@@ -29,9 +29,11 @@ function displayListings(response) {
 function getListings() {
 	//TODO: Change this to the actual server once it's deployed.
 	var http = new XMLHttpRequest();
-	var url = "http://localhost:8080/webproject/Listings";
+	var url = "http://localhost:8080/webproject/ListingsIndex";
 	http.open("GET", url, true);
 	http.send();
+	
+	console.log("Tomcat is a bitch");
 	
 	http.onreadystatechange = function() {
 		if ((this.readyState == 4) && (this.status == 200)) {

@@ -83,6 +83,30 @@ public class UtilDB {
       return resultList;
    }
    
+   public static List<Posting> listPostings() { //Get all postings
+	      List<Posting> resultList = new ArrayList<Posting>();
+
+	      Session session = getSessionFactory().openSession();
+	      Transaction tx = null;
+
+	      try {
+	         tx = session.beginTransaction();
+	         List<?> posts = session.createQuery("FROM Posting").list();
+	         for (Iterator<?> iterator = posts.iterator(); iterator.hasNext();) {
+	            Posting post = (Posting) iterator.next();
+	            resultList.add(post);
+	         }
+	         tx.commit();
+	      } catch (HibernateException e) {
+	         if (tx != null)
+	            tx.rollback();
+	         e.printStackTrace();
+	      } finally {
+	         session.close();
+	      }
+	      return resultList;
+	   }
+   
    public static Posting FindListing(int itemId) { //Find Posting by ID
 	      Posting result = new Posting();
 
@@ -111,12 +135,12 @@ public class UtilDB {
 	   }
 
    public static void createUsers(String firstName, String lastName, String email, 
-		   String password, Integer age, Role role) {  //Data Insertion
+		   String password, Integer age, Role role, Organization organization) {  //Data Insertion
       Session session = getSessionFactory().openSession();
       Transaction tx = null;
       try {
          tx = session.beginTransaction();
-         session.save(new User(firstName, lastName, email, password, age, role));
+         session.save(new User(firstName, lastName, email, password, age, role, organization));
          tx.commit();
       } catch (HibernateException e) {
          if (tx != null)
