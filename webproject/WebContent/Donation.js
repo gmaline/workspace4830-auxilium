@@ -18,13 +18,6 @@ function checkForm() {
   document.getElementById("submissionType").innerHTML = `${x} Submission`;
 }
 
-function submitForm() {
-	//TODO: Actually send the data
-	document.getElementById("bodyContent").innerHTML = "<p>" +
-	"Thank you for submitting a donation! We will notify you when it has " +
-	"been requested by an organization." +
-	"</p>";
-}
 
 function goBack() {
 	var formBook = document.getElementById("formBook");
