@@ -28,5 +28,4 @@
 		</div>
 	</div>
 	
-	<script src=Listings.js></script>
 <%@ include file="Footer.jsp" %>

@@ -21,7 +21,7 @@ import datamodel.Posting;
 /**
  * Servlet implementation class Listings
  */
-@WebServlet("/Listings")
+@WebServlet("/ListingsIndex")
 public class ListingsIndex extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
