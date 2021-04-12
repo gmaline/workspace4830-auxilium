@@ -21,7 +21,7 @@ import util.*;
 /**
  * Servlet implementation class ProfileOrganization
  */
-@WebServlet("/ProfileOrganization")
+@WebServlet("ProfileOrganization")
 public class ProfileOrganization extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
