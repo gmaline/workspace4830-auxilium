@@ -1,4 +1,3 @@
-package BackEnd;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Test
  */
-@WebServlet("/BackendTest")
+@WebServlet("/Test")
 public class Test extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
