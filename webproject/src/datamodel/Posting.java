@@ -31,7 +31,7 @@ public class Posting {
 	private Boolean type;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "user_id")
 	private User userId;
 
 	public Posting() {

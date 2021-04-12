@@ -32,10 +32,10 @@ public class User {
 	@Column(name = "age")
 	private Integer age;
 
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "role_id")
 	private Role role;
 	
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "organization_id")
 	private Organization organization;
 
 	public User() {
