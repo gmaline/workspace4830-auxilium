@@ -15,7 +15,7 @@ public class Posting {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "posting_id")
+	@Column(name = "id")
 	private Integer id;
 
 	@Column(name = "name")
@@ -31,7 +31,7 @@ public class Posting {
 	private Boolean type;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "id")
 	private User userId;
 
 	public Posting() {
