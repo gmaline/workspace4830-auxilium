@@ -26,8 +26,9 @@
 			}
 			</script>
 			<br/>
-			<br/>
+			<h6 style="color:red;">Incorrect Email or Password. Please try again.</h6>
 			<input type="submit" value="Submit" />
+			
 		</form>
 		</div>
 		

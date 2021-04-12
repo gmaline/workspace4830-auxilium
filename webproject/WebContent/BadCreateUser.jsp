@@ -34,8 +34,7 @@
 			}
 			</script>
 			<br/>
-			<br/>
-			
+			<h6 style="color:red;">User Already Exists. Please createa new account or <a href="/webproject/SignIn.jsp">Sign In</a>.</h6>
 			<input type="submit" value="Submit" />
 		</form>
 		
@@ -43,6 +42,5 @@
 	</div>
 	<br/>
 
-	<a href="/webproject/SignIn.jsp">Already have an account? Sign In</a> <br>
 </main>
 <%@ include file="Footer.jsp" %>

@@ -111,7 +111,7 @@ public class UtilDB {
 	   }
 
    public static void createUsers(String firstName, String lastName, String email, 
-		   String password, Integer age, Role role, Organization organization) {  //Data Insertion
+		   String password, Integer age, String role, String organization) {  //Data Insertion
       Session session = getSessionFactory().openSession();
       Transaction tx = null;
       try {

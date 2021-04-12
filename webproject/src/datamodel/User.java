@@ -33,15 +33,15 @@ public class User {
 	private Integer age;
 
 	@JoinColumn(name = "id")
-	private Role role;
+	private String role;
 	
 	@JoinColumn(name = "id")
-	private Organization organization;
+	private String organization;
 
 	public User() {
 	}
 
-	public User(Integer id, String firstName, String lastName, String email, String password, Integer age, Role role, Organization organization) {
+	public User(Integer id, String firstName, String lastName, String email, String password, Integer age, String role, String organization) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -52,7 +52,7 @@ public class User {
 		this.organization = organization;
 	}
 
-	public User(String firstName, String lastName, String email, String password, Integer age, Role role, Organization organization) {
+	public User(String firstName, String lastName, String email, String password, Integer age, String role, String organization) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -110,19 +110,19 @@ public class User {
 		this.age = age;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 	
-	public Organization getOrganization() {
+	public String getOrganization() {
 		return organization;
 	}
 
-	public void setOrganization(Organization organization) {
+	public void setOrganization(String organization) {
 		this.organization = organization;
 	}
 
