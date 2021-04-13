@@ -49,7 +49,7 @@ public class SignInUser extends HttpServlet {
 	    }
 	    // Display an error if the password is not there or if the user is not there.
 	    if (!passwordFound) {
-	    	response.sendRedirect(request.getContextPath() + "/SignIn.jsp");
+	    	response.sendRedirect(request.getContextPath() + "/BadSignIn.jsp");
 	    }
 	    // If the password matches the user, redirect to the home page.
 	    else {

@@ -15,7 +15,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "user_id")
 	private Integer id;
 
 	@Column(name = "firstName")
@@ -63,8 +63,7 @@ public class User {
 		this.age = age;
 		this.role = role;
 		this.organization = organization;
-		//TODO remove this
-        System.out.print("inside User Constructor");
+		
 	}
 
 	public Integer getId() {

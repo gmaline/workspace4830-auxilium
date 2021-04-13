@@ -64,18 +64,16 @@ public class CreateUsers extends HttpServlet {
 	      }
 	     //if there is not already a user, create the User and redirect to home page.
 	      if (listUsers.isEmpty()) {
-	    	 System.out.print("No user here!");
 	    	UtilDB.createUsers(firstName, lastName, email, password, age, role, organization);
 			HttpSession session = request.getSession();
 			session.setAttribute("userEmail", email);
 			response.sendRedirect(request.getContextPath() + "/HomePage.jsp");
 			
-			System.out.print(session.getAttribute("userEmail"));
 
 	      }
 	      //if there is already a user, display an error message.
 	      else { 
-	    	  response.sendRedirect(request.getContextPath() + "/SignIn.jsp");
+	    	  response.sendRedirect(request.getContextPath() + "/UserAlreadyExists.jsp");
 	      }
 
 		
