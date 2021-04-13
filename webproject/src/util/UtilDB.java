@@ -169,4 +169,92 @@ public class UtilDB {
          session.close();
       }
    }
+   
+   public static void createOrganizaiton(String name) {  //Data Insertion
+      Session session = getSessionFactory().openSession();
+      Transaction tx = null;
+      try {
+         tx = session.beginTransaction();
+         session.save(new Organization(name));
+         tx.commit();
+      } catch (HibernateException e) {
+         if (tx != null)
+            tx.rollback();
+         e.printStackTrace();
+      } finally {
+         session.close();
+      }
+   }
+   
+   public static void createRole(String name) {  //Data Insertion
+	      Session session = getSessionFactory().openSession();
+	      Transaction tx = null;
+	      try {
+	         tx = session.beginTransaction();
+	         //TODO handle giving different roles different access.
+	         session.save(new Role(name, true, true));
+	         tx.commit();
+	      } catch (HibernateException e) {
+	         if (tx != null)
+	            tx.rollback();
+	         e.printStackTrace();
+	      } finally {
+	         session.close();
+	      }
+	   }
+   
+   public static Role findRole(String roleName) { //Find role by name
+	      Role result = null;
+
+	      Session session = getSessionFactory().openSession();
+	      Transaction tx = null;
+
+	      try {
+	         tx = session.beginTransaction();
+	         List<?> roles = session.createQuery("FROM Role").list();
+	         for (Iterator<?> iterator = roles.iterator(); iterator.hasNext();) {
+	            Role role = (Role) iterator.next();
+	            if (role.getName().equals(roleName)) {
+	               result = role;
+	               break;
+	            }
+	         }
+	         tx.commit();
+	      } catch (HibernateException e) {
+	         if (tx != null)
+	            tx.rollback();
+	         e.printStackTrace();
+	      } finally {
+	         session.close();
+	      }
+	      return result;
+	   }
+   	
+   public static Organization findOrganization(String organizationName) { //Find organization by name
+	      Organization result = null;
+
+	      Session session = getSessionFactory().openSession();
+	      Transaction tx = null;
+
+	      try {
+	         tx = session.beginTransaction();
+	         List<?> orgs = session.createQuery("FROM Organization").list();
+	         for (Iterator<?> iterator = orgs.iterator(); iterator.hasNext();) {
+	            Organization org = (Organization) iterator.next();
+	            if (org.getName().equals(organizationName)) {
+	               result = org;
+	               break;
+	            }
+	         }
+	         tx.commit();
+	      } catch (HibernateException e) {
+	         if (tx != null)
+	            tx.rollback();
+	         e.printStackTrace();
+	      } finally {
+	         session.close();
+	      }
+	      return result;
+	   }
+
 }

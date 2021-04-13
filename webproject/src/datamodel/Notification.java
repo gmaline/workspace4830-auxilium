@@ -14,26 +14,26 @@ public class Notification {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name = "id")
+   @Column(name = "notification_id")
    private Integer id;
 
    @Column(name = "message")
    private String message;
    
    @ManyToOne
-   @JoinColumn(name = "id")
+   @JoinColumn(name = "user_id")
    private User notifiedUser;
    
    @ManyToOne
-   @JoinColumn(name = "id")
+   @JoinColumn(name = "user_id")
    private User notifierUser;
    
    @ManyToOne
-   @JoinColumn(name = "id")
+   @JoinColumn(name = "posting_id")
    private Posting donation;
    
    @ManyToOne
-   @JoinColumn(name = "id")
+   @JoinColumn(name = "posting_id")
    private Posting request;
    
    public Notification() {

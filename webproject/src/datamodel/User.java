@@ -63,6 +63,7 @@ public class User {
 		this.age = age;
 		this.role = role;
 		this.organization = organization;
+		
 	}
 
 	public Integer getId() {

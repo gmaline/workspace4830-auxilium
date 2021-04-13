@@ -9,7 +9,7 @@
 		<div style="width:100%">
 		<h2 style="text-align:center">Sign In to Your Account</h2>
 		
-		<form action="TBD" method="POST">
+		<form action="SignInUser" method="POST">
 			Email: <input type="text" name="email"> <br />
 			<br/>
 			Password: <input type="password" name="password" id="input"> <br />

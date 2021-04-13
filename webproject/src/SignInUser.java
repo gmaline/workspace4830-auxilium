@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class SignInUser
@@ -40,19 +41,17 @@ public class SignInUser extends HttpServlet {
 	    boolean passwordFound = false;
 	    // Check that the user matches the given password.
 	    for (User user : listUsers) {
-	    	if (user.getPassword() == password) {
+	    	if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+	    		HttpSession session = request.getSession();
+	    		session.setAttribute("userEmail", user.getEmail());
 	    		passwordFound = true;
 	    	}
 	    }
 	    // Display an error if the password is not there or if the user is not there.
 	    if (!passwordFound) {
-	    	
-	    	request.setAttribute("error", "Username or password not correct.");
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("SignIn.jsp");
-			dispatcher.forward(request, response);
+	    	response.sendRedirect(request.getContextPath() + "/BadSignIn.jsp");
 	    }
-	    // If the password matches the user, redirct to the home page.
+	    // If the password matches the user, redirect to the home page.
 	    else {
 	    	response.sendRedirect(request.getContextPath() + "/HomePage.jsp");
 	    }

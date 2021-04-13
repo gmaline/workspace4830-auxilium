@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import datamodel.Organization;
 import datamodel.Role;
@@ -40,8 +41,21 @@ public class CreateUsers extends HttpServlet {
 		String password = request.getParameter("password").trim();
 		Integer age = Integer.parseInt(request.getParameter("age").trim());
 		//TODO Handle giving different types of roles different permissions.
-		Role role = new Role(request.getParameter("role").trim(), true, true);
-		Organization organization = new Organization(request.getParameter("organization").trim());
+		//collect the role name and org name. If one exists, pull it from the db.
+		//If it doesn't exist create it.
+		String roleName = request.getParameter("role").trim();
+		String orgName = request.getParameter("organization").trim();
+		
+		Role role = UtilDB.findRole(roleName);
+		if (role == null) {
+			UtilDB.createRole(roleName);
+			role = UtilDB.findRole(roleName);
+		}
+		Organization organization = UtilDB.findOrganization(orgName);
+		if (organization == null) {
+			UtilDB.createOrganizaiton(orgName);
+			organization = UtilDB.findOrganization(orgName);
+		}
 		
 		// Check to see if that email already exists in the database.
 		List<User> listUsers = null;
@@ -50,16 +64,16 @@ public class CreateUsers extends HttpServlet {
 	      }
 	     //if there is not already a user, create the User and redirect to home page.
 	      if (listUsers.isEmpty()) {
-	  		UtilDB.createUsers(firstName, lastName, email, password, age, role, organization);
-	  		response.sendRedirect(request.getContextPath() + "/HomePage.jsp");
-	  	
+	    	UtilDB.createUsers(firstName, lastName, email, password, age, role, organization);
+			HttpSession session = request.getSession();
+			session.setAttribute("userEmail", email);
+			response.sendRedirect(request.getContextPath() + "/HomePage.jsp");
+			
+
 	      }
 	      //if there is already a user, display an error message.
 	      else { 
-			request.setAttribute("error", "User already exits.");
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("CreateUser.jsp");
-			dispatcher.forward(request, response);
+	    	  response.sendRedirect(request.getContextPath() + "/UserAlreadyExists.jsp");
 	      }
 
 		
