@@ -16,7 +16,11 @@
 			<br/>
 			Age: &emsp;&emsp;&emsp;&ensp;&nbsp; <input type="text" name="age"> <br />
 			<br/>
-			Role: &emsp;&emsp;&emsp;&ensp;&nbsp; <input type="text" name="role"> <br />
+			<label for="cars">Role:</label>
+			  <select name="role" id="role">
+			    <option value="student">Student</option>
+			    <option value="organization">Organization</option>
+			  </select><br/>
 			<br/>
 			Organization: <input type="text" name="organization"> <br />
 			<br/>
@@ -37,10 +41,6 @@
 			<br/>
 			
 			<input type="submit" value="Submit" />
-			
-			<c:if test="${not empty error}">
-				<h3>${error}</h3>
-			</c:if>
 		</form>
 		
 		
