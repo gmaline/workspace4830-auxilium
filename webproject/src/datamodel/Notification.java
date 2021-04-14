@@ -21,19 +21,19 @@ public class Notification {
    private String message;
    
    @ManyToOne
-   @JoinColumn(name = "user_id")
+   @JoinColumn(name = "notified_user_id")
    private User notifiedUser;
    
    @ManyToOne
-   @JoinColumn(name = "user_id")
+   @JoinColumn(name = "notifier_user_id")
    private User notifierUser;
    
    @ManyToOne
-   @JoinColumn(name = "posting_id")
+   @JoinColumn(name = "donation_posting_id")
    private Posting donation;
    
    @ManyToOne
-   @JoinColumn(name = "posting_id")
+   @JoinColumn(name = "request_posting_id")
    private Posting request;
    
    public Notification() {

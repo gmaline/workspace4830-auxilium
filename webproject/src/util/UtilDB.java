@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -13,10 +14,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import com.mysql.jdbc.PreparedStatement;
+
 import datamodel.Role;
 import datamodel.*;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -141,6 +145,50 @@ public class UtilDB {
 	      return result;
 	   }
    
+   public static void insertNotify(Notification notify) {
+	   Session session = getSessionFactory().openSession();
+	   Transaction tx = null;
+	   try {
+		   tx = session.beginTransaction();
+		   session.save(notify);
+		   tx.commit();
+	   } catch (HibernateException e) {
+		   if (tx != null) {
+			   tx.rollback();
+		   }
+		   e.printStackTrace();
+	   } finally {
+		   session.close();
+	   }
+   }
+   
+   
+ public static Integer removePosting(int id) {
+	 	Integer result = -1;
+	 	
+	   Session session = getSessionFactory().openSession();
+	   Transaction tx = null;
+	   
+	   String sql = "DELETE FROM Posting where posting_id = " + Integer.toString(id);
+
+	   try {
+	         tx = session.beginTransaction();
+	         Integer query = session.createQuery(sql).getFirstResult();
+	         result = query;
+	         tx.commit();
+
+	   } catch (HibernateException e) {
+		   if (tx != null) {
+			   tx.rollback();
+		   }
+		   e.printStackTrace();
+	   } finally {
+		   session.close();
+	   }
+	   return result;
+   }
+ 
+ 
    public static List<Posting> listPostings() { //Get all postings
 	      List<Posting> resultList = new ArrayList<Posting>();
 
@@ -180,7 +228,6 @@ public class UtilDB {
 	   } finally {
 		   session.close();
 	   }
-
    }
 
 
