@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.NumberFormat;
 import java.text.ParseException;
 
@@ -33,17 +34,30 @@ public class SubmitRequest extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("item");
+		
 		try {
 			int item = ((Number)NumberFormat.getInstance().parse(id)).intValue(); //gets the integer value from the String
 			
 			Posting post = new Posting();
 			post = UtilDB.FindListing(item);
+			
+			//System.out.println(post.toString());
 		
-			if(post == null) {
-//				notfound();
+			if(post != null) {		//Item Found
+				 
+				
+				
 			}
-			else {
-//				found();
+			else {	//Item Not Found
+  				 response.setContentType("text/html");
+		 	     PrintWriter out = response.getWriter();
+		 	     
+		 	     String someMessage = "ITEM NOT FOUND!\\nDouble Check Item Number";
+		 	     out.println("<script type='text/javascript'>");
+		 	     out.println("alert(" + "'" + someMessage + "'" + ");");
+		 	     out.println("location='Request.jsp';");
+		 	     out.println("</script>");
+		 	     out.println("</head><body></body></html>");
 			}
 			
 		} 

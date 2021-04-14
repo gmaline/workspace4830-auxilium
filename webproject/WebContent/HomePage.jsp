@@ -2,7 +2,19 @@
 <title>Home Page</title>
 </head>
 <body>
-<%@ include file="Navbar.jsp" %>
+
+
+<%	HttpSession pression = request.getSession();
+	String user = (String)pression.getAttribute("email"); 
+	if(user == null){%>
+		<%@ include file= "Navbar.jsp" %>
+	<% }
+	else {%>
+    	<%@ include file= "Navbar_LoggedIn.jsp" %>
+	<% } 
+%>
+
+
 <h1>Welcome to Auxilium!</h1>
 <div>
 While the start of the new school year can be an exciting time for students, it can also be a stressful time for families across the country. 
