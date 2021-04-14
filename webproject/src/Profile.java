@@ -52,7 +52,7 @@ public class Profile extends HttpServlet {
  	        PrintWriter out = response.getWriter();
  	        String title = "Account Profile";
     		request.getRequestDispatcher("/Header.jsp").include(request, response);
-    		request.getRequestDispatcher("/Navbar.jsp").include(request, response);
+    		request.getRequestDispatcher("/Navbar_LoggedIn.jsp").include(request, response);
 
 	        out.println("<title>Profile Page</title>\r\n"
 	              + "</head>\r\n"
@@ -86,6 +86,7 @@ public class Profile extends HttpServlet {
 	              + "</body>\r\n"
 	              + "</html>"
 	        						);  
+    		request.getRequestDispatcher("/Footer.jsp").include(request, response); 
 	     }
 		 else //If the User NOt Logged In, go back to Homepage
 		 {

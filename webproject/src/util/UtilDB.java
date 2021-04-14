@@ -88,7 +88,7 @@ public class UtilDB {
    }
    
    public static Posting FindListing(int itemId) { //Find Posting by ID
-	      Posting result = new Posting();
+	      Posting result = null; //new Posting();
 
 	      Session session = getSessionFactory().openSession();
 	      Transaction tx = null;

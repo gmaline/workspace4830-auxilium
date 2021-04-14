@@ -24,13 +24,15 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
         
-    	<li class="nav-item">
-            <a class="nav-link" href="/webproject/SignIn.jsp">Login</a>
-        </li>
-           	<li class="nav-item">
-              	<a class="nav-link" href="/webproject/CreateUser.jsp">Register</a>
-        </li>   
-
+   			<li class="nav-item">
+            	<a class="nav-link" href="Profile">Profile</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" href="LogOut" >Log Out</a>
+            </li>
+     
+            
+            
         </ul>
     </div>
 </nav>
