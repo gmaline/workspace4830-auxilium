@@ -34,7 +34,7 @@ public class SubmitRequest extends HttpServlet {
 		
 		String id = request.getParameter("item");
 		try {
-			int item = ((Number)NumberFormat.getInstance().parse(id)).intValue();
+			int item = ((Number)NumberFormat.getInstance().parse(id)).intValue(); //gets the integer value from the String
 			
 			Posting post = new Posting();
 			post = UtilDB.FindListing(item);
