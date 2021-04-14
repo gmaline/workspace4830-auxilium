@@ -3,6 +3,9 @@
 package util;
 
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -21,8 +24,9 @@ import org.hibernate.Transaction;
  * @since JavaSE-1.8
  */
 public class UtilDB {
+	
    static SessionFactory sessionFactory = null;
-
+   
    public static SessionFactory getSessionFactory() {
       if (sessionFactory != null) {
          return sessionFactory;
@@ -96,6 +100,33 @@ public class UtilDB {
 	            Posting post = (Posting) iterator.next();
 	            if (post.getId() == itemId) {
 	               result = post;
+	               break;
+	            }
+	         }
+	         tx.commit();
+	      } catch (HibernateException e) {
+	         if (tx != null)
+	            tx.rollback();
+	         e.printStackTrace();
+	      } finally {
+	         session.close();
+	      }
+	      return result;
+	   }
+   
+   public static User FindUser(String email) { //Find User by email
+	      User result = new User();
+
+	      Session session = getSessionFactory().openSession();
+	      Transaction tx = null;
+
+	      try {
+	         tx = session.beginTransaction();
+	         List<?> users = session.createQuery("FROM User").list();
+	         for (Iterator<?> iterator = users.iterator(); iterator.hasNext();) {
+	            User user = (User) iterator.next();
+	            if (user.getEmail().equals(email)) {
+	               result = user;
 	               break;
 	            }
 	         }

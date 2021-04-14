@@ -29,6 +29,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/webproject/CreateUser.jsp">Register</a>
             </li>
+            <li class="nav-item">
+            	<a class="nav-link" href="Profile">Profile</a>
+            </li>
         </ul>
     </div>
 </nav>
