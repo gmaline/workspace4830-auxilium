@@ -47,11 +47,24 @@ public class ProcessDonation extends HttpServlet {
 		String name = request.getParameter("name");
 		String quality = request.getParameter("quality");
 		String description = request.getParameter("description");
-
+		String currentUser = (String) request.getSession().getAttribute("userEmail");
 
 		List<User> users = UtilDB.listUsers();
-
-		UtilDB.insertPosting(name, quality, description, false, users.get(0));
+		User user = new User();
+		
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).getEmail().equals(currentUser)) {
+				user = users.get(i);
+				break;
+			}
+		}
+		
+		if (user != null) {
+			UtilDB.insertPosting(name, quality, description, false, user);
+		}
+		else {
+			request.setAttribute("name", "Something went wrong :( Check the database");
+		}
 
 		List<Posting> posts = UtilDB.listPostings();
 		for (int i = 0; i < posts.size(); i++) {

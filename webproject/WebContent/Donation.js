@@ -5,12 +5,12 @@ function checkForm() {
 
   x = document.getElementById("type").value;
 
-  if (x == "Book") {
-	  document.getElementById("formBook").removeAttribute("hidden");
-  }
-  else {
+// if (x == "Book") {
+//	  document.getElementById("formBook").removeAttribute("hidden");
+//  }
+//  else {
 	  document.getElementById("formNotBook").removeAttribute("hidden");
-  }
+//  }
   
   document.getElementById("typeContainer").setAttribute("hidden", "");
   document.getElementById("goBack").removeAttribute("hidden");
@@ -20,16 +20,15 @@ function checkForm() {
 
 
 function goBack() {
-	var formBook = document.getElementById("formBook");
+//	var formBook = document.getElementById("formBook");
 	var formNotBook = document.getElementById("formNotBook");
-
 	
-	if (formBook.attributes.length < 2) {
-		formBook.setAttribute("hidden", "");
-	}
-	if (formNotBook.attributes.length < 2) {
+//	if (formBook.hasAttribute("hidden") == false) {
+//		formBook.setAttribute("hidden", "");
+//	}
+//	if (formNotBook.hasAttribute("hidden") == false) {
 		formNotBook.setAttribute("hidden", "")
-	}
+//	}
 	
 	document.getElementById("typeContainer").removeAttribute("hidden");
 	document.getElementById("goBack").setAttribute("hidden", "");

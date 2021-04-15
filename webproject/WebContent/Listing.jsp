@@ -8,11 +8,11 @@
 		<div class="text-center col-4 offset-4">
 			<h4>${name}</h4>
 			<br><br>
-			<p><strong>Quality:</strong>${quality}</p>
+			<p><strong>Quality: </strong>${quality}</p>
 			<br><br>
-			<p><strong>Description:</strong>${description}</p>
+			<p><strong>Description: </strong>${description}</p>
 			<br><br>
-			<p><strong>Posted by:</strong>${user}</p>
+			<p><strong>Posted by: </strong>${user}</p>
 			<br><br>
 			<button type="button" class="btn btn-primary">Request this item</button>
 		</div>
