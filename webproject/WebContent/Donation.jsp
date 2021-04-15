@@ -51,7 +51,7 @@
 				<input class="btn btn-primary" type="submit" value="Submit">
 			</form>
 
-			<form action="ProcessDonation" method="post" id="formBook" hidden>
+			<!-- <form action="ProcessDonation" method="post" id="formBook" hidden>
 				<label for="title">Title:</label>
 				<input type="text" class="form-control" id="title" name="title" required>
 				<br>
@@ -73,7 +73,7 @@
 				<textarea class="form-control" id="descriptionBook" name="description" required></textarea>
 				<br>
 				<input class="btn btn-primary" type="submit" value="Submit">
-			</form>
+			</form> -->
 
 		</div>
 		
