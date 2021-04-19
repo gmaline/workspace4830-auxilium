@@ -100,8 +100,9 @@ public class SubmitRequest extends HttpServlet {
 		        						);  
 	    		request.getRequestDispatcher("/Footer.jsp").include(request, response); 
 	    		
-	    		UtilDB.removePosting(item);	//Once an Item has been requested, remove it from the Database
-	    		
+	    	//	UtilDB.removePosting(item);	TODO
+	    	//Once an Item has been requested, remove it from the Database
+	    	//:TODO  @Logan is working on this. No need to 
 			}
 			else {	//Item Not Found
   				 response.setContentType("text/html");

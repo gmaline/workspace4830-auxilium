@@ -58,18 +58,15 @@ public class SignInUser extends HttpServlet {
 	    	/**The Following code is added by Wisdom. 
 	    	 * It is used in order to display the profile of the current user.
 	    	 */
-	    	//	UtilDB.logIn(email); //Saves the Email of the Currently Logged In User.
+	    	//Saves the Email of the Currently Logged In User.
 	    	HttpSession session = request.getSession();
 	        session.setAttribute("email", email);
-	    	/**
-	    	 * End of the Wisdom Code. Thank you for your Understanding :)
-	    	 */
+	    	/**End of the Wisdom Code. Thank you for your Understanding :) */
 	    	//=========================================================================
 	    		
 	    	response.sendRedirect(request.getContextPath() + "/HomePage.jsp");
 	    }
-	    	
-	     
+	    	    
 	}
 
 	/**
