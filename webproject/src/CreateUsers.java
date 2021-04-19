@@ -67,9 +67,15 @@ public class CreateUsers extends HttpServlet {
 	    	UtilDB.createUsers(firstName, lastName, email, password, age, role, organization);
 			HttpSession session = request.getSession();
 			session.setAttribute("userEmail", email);
+				
+			//=======================================================================
+	    	/**The Following code is added by Wisdom. */
+	        	session.setAttribute("email", email);
+	    	/** End of the Wisdom Code. Thank you for your Understanding :)*/
+	    	//=========================================================================
+			
 			response.sendRedirect(request.getContextPath() + "/HomePage.jsp");
 			
-
 	      }
 	      //if there is already a user, display an error message.
 	      else { 
