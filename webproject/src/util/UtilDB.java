@@ -116,7 +116,7 @@ public class UtilDB {
       Transaction tx = null;
       try {
          tx = session.beginTransaction();
-         session.save(new User(firstName, lastName, email, password, age, role));
+         session.save(new User(firstName, lastName, email, password, age, role, null));
          tx.commit();
       } catch (HibernateException e) {
          if (tx != null)
