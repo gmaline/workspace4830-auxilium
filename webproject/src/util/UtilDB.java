@@ -163,18 +163,15 @@ public class UtilDB {
    }
    
    
- public static Integer removePosting(int id) {
+ public static Integer removePosting(Posting post) {
 	 	Integer result = -1;
 	 	
 	   Session session = getSessionFactory().openSession();
 	   Transaction tx = null;
 	   
-	   String sql = "DELETE FROM Posting where posting_id = " + Integer.toString(id);
-
 	   try {
 	         tx = session.beginTransaction();
-	         Integer query = session.createQuery(sql).getFirstResult();
-	         result = query;
+	         session.delete(post);
 	         tx.commit();
 
 	   } catch (HibernateException e) {

@@ -49,6 +49,9 @@ public class ProcessDonation extends HttpServlet {
 		String description = request.getParameter("description");
 		String currentUser = (String) request.getSession().getAttribute("userEmail");
 
+		if (currentUser.equals(null)) {
+			
+		}
 		List<User> users = UtilDB.listUsers();
 		User user = new User();
 		

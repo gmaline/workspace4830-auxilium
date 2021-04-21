@@ -61,6 +61,7 @@ public class Listing extends HttpServlet {
 		request.setAttribute("quality", quality);
 		request.setAttribute("description", description);
 		request.setAttribute("user", user);
+		request.setAttribute("id", id);
 
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/Listing.jsp");
 		rd.forward(request, response);

@@ -2,7 +2,15 @@
 <title>Listing</title>
 </head>
 <body>
-<%@ include file="Navbar.jsp" %>
+<%	HttpSession pression = request.getSession();
+	String user = (String)pression.getAttribute("email"); 
+	if(user == null){%>
+		<%@ include file= "Navbar.jsp" %>
+	<% }
+	else {%>
+    	<%@ include file= "Navbar_LoggedIn.jsp" %>
+	<% } 
+%>
 
 		<br><br><br>
 		<div class="text-center col-4 offset-4">
@@ -14,7 +22,11 @@
 			<br><br>
 			<p><strong>Posted by: </strong>${user}</p>
 			<br><br>
-			<button type="button" class="btn btn-primary">Request this item</button>
+			<p><strong>Item ID: </strong>${id}</p>
+			<br><br>
+			<form name="request" action="SubmitRequest?item=${id}" method="POST">
+				<input type="submit" class="btn btn-primary" value="Request this item">
+			</form>
 		</div>
 
 </body>
