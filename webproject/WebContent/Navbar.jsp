@@ -5,7 +5,7 @@
                 <a class="nav-link" href="/webproject/ListingsIndex">Listings</a> 
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Search</a>
+                <a class="nav-link" href="/webproject/Search.jsp">Search</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/webproject/Donation.jsp">Donate</a> 

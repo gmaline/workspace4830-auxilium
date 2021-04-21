@@ -118,6 +118,35 @@ public class UtilDB {
 	      return result;
 	   }
    
+   public static List<Posting> FindListing(String keyword) { //Find Posting by keyword
+	      List<Posting> resultList = new ArrayList<Posting>();
+
+	      Session session = getSessionFactory().openSession();
+	      Transaction tx = null;
+	      
+	      try {
+	    	  
+	         tx = session.beginTransaction();
+	         String select = keyword.isEmpty() ? "" : " WHERE name LIKE " + keyword; 
+	         List<?> posts = session.createQuery("FROM Posting" + select ).list();
+	         
+	         for (Iterator<?> iterator = posts.iterator(); iterator.hasNext();) {
+	        	 Posting post = (Posting) iterator.next();
+	             if (post.getName().contains(keyword)) {
+	                resultList.add(post);
+	             }
+	         }
+	         tx.commit();
+	      } catch (HibernateException e) {
+	         if (tx != null)
+	            tx.rollback();
+	         e.printStackTrace();
+	      } finally {
+	         session.close();
+	      }
+	      return resultList;
+	   }
+   
    public static User FindUser(String email) { //Find User by email
 	      User result = new User();
 
