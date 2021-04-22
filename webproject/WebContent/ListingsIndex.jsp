@@ -4,8 +4,20 @@
 <title>View Listings</title>
 </head>
 <body>
-<%@ include file="Navbar.jsp" %>
-	<br><br>
+
+<%	HttpSession pression = request.getSession();
+    	String user = (String)pression.getAttribute("email"); 
+		if(user == null){
+		 response.setContentType("text/html");
+		 out.println("<script type=\"text/javascript\">");
+		 out.println("alert('You MUST Log In To View the Listings');");
+		 out.println("location='SignIn.jsp';");
+		 out.println("</script>");
+		}
+	%>
+    	
+    <%@ include file= "Navbar_LoggedIn.jsp" %>
+    
 	<h1 class="text-center">Listings</h1>
 	<br>
 	<div class="container">

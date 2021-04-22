@@ -3,10 +3,23 @@
 </head>
 
 <body>
-	<%@ include file="Navbar.jsp" %>
+
+	<%	HttpSession pression = request.getSession();
+    	String user = (String)pression.getAttribute("email"); 
+		if(user == null){
+		 response.setContentType("text/html");
+		 out.println("<script type=\"text/javascript\">");
+		 out.println("alert('You MUST Log In To Make a Donation!');");
+		 out.println("location='SignIn.jsp';");
+		 out.println("</script>");
+		}
+	%>
+    	
+    <%@ include file= "Navbar_LoggedIn.jsp" %>
+
+
 	<div id="bodyContent">
 		<div class="col-4 offset-4">
-			<br><br>
 			<div class="text-center">
 				<h1>Create a donation</h1>
 				<br>
