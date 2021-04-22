@@ -1,33 +1,44 @@
 <%@ include file="Header.jsp" %>
-<title>Search Listing</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<title>Search Results</title>
 </head>
 <body>
 
 
 <%	HttpSession pression = request.getSession();
-	String user = (String)pression.getAttribute("email"); 
-	if(user == null){%>
-		<%@ include file= "Navbar.jsp" %>
-	<% }
-	else {%>
-    	<%@ include file= "Navbar_LoggedIn.jsp" %>
-	<% } 
-%>
+    	String user = (String)pression.getAttribute("email"); 
+		if(user == null){
+		 response.setContentType("text/html");
+		 out.println("<script type=\"text/javascript\">");
+		 out.println("alert('You MUST Log In To View the Search Results');");
+		 out.println("location='SignIn.jsp';");
+		 out.println("</script>");
+		}
+	%>
+    	
+    <%@ include file= "Navbar_LoggedIn.jsp" %>
+    
+	<h1 class="text-center">Search Results</h1>
+	<br>
+	<a class="nav-link" href="/webproject/Search.jsp">Search Listings</a>
+	<div class="container">
+		<div class="row" id="listings">
+			
+			<c:forEach items="${posts}" var="post">
 
+				<div class="col-4">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">${post.name}</h5>
+							<p class="card-text">${post.description}</p>
+							<a href="/webproject/Listing?id=${post.id}" class="btn btn-primary">View</a>
+						</div>
+					</div>
+				</div>
 
-<h1>Search for Listings</h1>
-<div>
-While the start of the new school year can be an exciting time for students, it can also be a stressful time for families across the country. 
-In 2020, 1 in 6 children lived in poverty. In addition, the average household spends $696.70 on back-to-school supplies. 
-For 1 in 6 children living in poverty, this means that families often struggle to buy school supplies while also putting food on the table. 
-
-Many schools and non-profit organizations seek to address this need by hosting back-to-school drives where community members donate much needed items.
-However, for many these needs are often left unmet. Teachers, on average, still spend $530 of their own money on school supplies for their classrooms. 
-At the same time, when the end of the school year rolls around students throw away their unused or partially used school supplies that they no longer need. 
-In fact, approximately 640,000 tons of books are discarded into landfills each year. 
-Our web application, Auxilium, hopes to change these statistics by bridging the gap between needs and available resources for families, schools, and other educational organizations. 
-</div>
+			</c:forEach>
+			
+		</div>
+	</div>
 	
-
 <%@ include file="Footer.jsp" %>
-

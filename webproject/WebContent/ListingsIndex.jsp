@@ -20,6 +20,9 @@
     
 	<h1 class="text-center">Listings</h1>
 	<br>
+
+    <a class="nav-link" href="/webproject/Search.jsp">Search Listings</a>
+
 	<div class="container">
 		<div class="row" id="listings">
 			

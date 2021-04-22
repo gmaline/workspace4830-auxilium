@@ -25,12 +25,13 @@ public class SimpleFormSearch extends HttpServlet {
    }
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	  	String keyword = request.getParameter("keyword").trim();
+	  	response.getWriter().append(keyword);
 	   
-	   response.setContentType("text/html");		
-	   String keyword = request.getParameter("keyword");
-		
-		List<Posting> posts = UtilDB.FindListing(keyword);
 
+		
+	   List<Posting> posts = UtilDB.FindListing(keyword);
+	
 		request.setAttribute("posts", posts);
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchResults.jsp");
