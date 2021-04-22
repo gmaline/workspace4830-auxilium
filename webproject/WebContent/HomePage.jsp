@@ -26,8 +26,7 @@ However, for many these needs are often left unmet. Teachers, on average, still 
 At the same time, when the end of the school year rolls around students throw away their unused or partially used school supplies that they no longer need. 
 In fact, approximately 640,000 tons of books are discarded into landfills each year. 
 Our web application, Auxilium, hopes to change these statistics by bridging the gap between needs and available resources for families, schools, and other educational organizations. 
-</div>
-	
+</div>	
 
 <%@ include file="Footer.jsp" %>
 

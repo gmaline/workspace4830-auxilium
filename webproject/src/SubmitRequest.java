@@ -63,7 +63,15 @@ public class SubmitRequest extends HttpServlet {
 	 	        String title = " Request Notification";
 	    		request.getRequestDispatcher("/Header.jsp").include(request, response);
 	    		request.getRequestDispatcher("/Navbar_LoggedIn.jsp").include(request, response);
-
+	    		
+	    		String listingName = post.getName();
+	    		String listingQuality = post.getQuality();
+	    		String listingDesc = post.getDescription();
+	    		String donorRole = donor.getRole().getName();
+	    		String donorOrg = donor.getOrganization().getName();
+	    		
+	    		String askerName = asker.getFirstName() + " " + asker.getLastName();
+	    		
 		        out.println("<title>Profile Page</title>\r\n"
 		              + "</head>\r\n"
 		              + "<div>\r\n"
@@ -75,18 +83,24 @@ public class SubmitRequest extends HttpServlet {
 		              + "	<div id=\"container\">\r\n"
 		              + "		\r\n"
 		              + "		<div style=\"width:100%\" >"
-		              + "<section>\r\n"
+		              + "<section style=\\\"text-align:center\\\">\r\n"
 		              + "<br />"
-		              + "\r\n Item Requested: " + "<br />"
+		              + "<h2 style=\"text-align:center\">Item Requested</h2>"
+		        //      + "\r\n Item Requested: " + "<br />"
 		              + "<br />"
-		              + "\r\n ID: " + postingID + "<br />"
+		              + "\r\n Item ID: " + postingID + "<br />"
+		              + "\r\n Item Name: " + listingName + "<br />"
+				      + "\r\n Quality: " + listingQuality + "<br />"
+					  + "\r\n Description: " + listingDesc + "<br />"
+					  + "\r\n From User: " + donorName + "<br />"
+					  + "\r\n Role: " + donorRole + "<br />"
+					  + "\r\n Organization: " + donorOrg + "<br />"
 		              + "<br />"
-		              + "\r\n " + post.toString() + "<br />"
-		              + "<br />"
-		              + "\r\n " + notify.toString() + "<br />"
+		              + "\r\n Notification Message: " + message + "<br />"
+		              + "\r\n From User: " + askerName + "<br />"    
+		              + "\r\n To User: " + donorName + "<br />"    
 		              + "<br />"
 		              + "\r\n Contact " + donorName + "<br />"
-		              + "<br />"
 		              + "\r\n at " + donorEmail + " to complete the Transaction.<br />"
 		              + "<br />"
 		              + "</section>\r\n"
