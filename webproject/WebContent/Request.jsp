@@ -19,7 +19,7 @@
 	<div id="container">		
 		
 		<div style="width:100%">
-		<h2 style="text-align:center">Request an Available Item</h2>
+		<h1 style="text-align:center">Request an Available Item</h1>
 		
 		<form name="requester" action="SubmitRequest" method="POST">
 		<br><br>
@@ -34,6 +34,6 @@
 		
 	</div>
 	</main>
-	
+
 <%@ include file="Footer.jsp" %>
 
