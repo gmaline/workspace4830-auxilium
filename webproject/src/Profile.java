@@ -50,13 +50,9 @@ public class Profile extends HttpServlet {
  	        String title = "Account Profile";
 
     		List<Notification> notifs = UtilDB.getNotificationsForUser(user);    		
-    		String notifications = "";
     		
-    		if (notifs != null) {
-    			notifications = "You have requests on the following items: ";
-    			for (int i = 0; i < notifs.size(); i++) {
-    				notifications += notifs.get(i).getDonation().getName() + ", ";
-    			}
+    		if (notifs.size() == 0) {
+    			notifs = null;
     		}
     		
     		request.setAttribute("fullName", fullName);
@@ -64,7 +60,6 @@ public class Profile extends HttpServlet {
     		request.setAttribute("org", org);
     		request.setAttribute("role", role);
     		request.setAttribute("title", title);
-    		request.setAttribute("notifications", notifications);
     		request.setAttribute("notifs", notifs);
     		
     		RequestDispatcher rd = getServletContext().getRequestDispatcher("/Profile.jsp");

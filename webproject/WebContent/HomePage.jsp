@@ -12,7 +12,7 @@
 				<a class="home-link" href="/webproject/CreateUser.jsp">Register</a>
 			<% }
 			else {%>
-		    	<a class="home-link" href="Profile">Profile</a>
+		    	<a class="home-link" href="Profile">Profile <span class="badge badge-primary" id="notifications"></span></a>
 				<a class="home-link" href="LogOut">Log Out</a>
 			<% } 
 		%>
