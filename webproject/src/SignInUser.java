@@ -64,7 +64,7 @@ public class SignInUser extends HttpServlet {
 	    	/**End of the Wisdom Code. Thank you for your Understanding :) */
 	    	//=========================================================================
 	    		
-	    	response.sendRedirect(request.getContextPath() + "/HomePage.jsp");
+	    	response.sendRedirect(request.getContextPath() + "/Profile");
 	    }
 	    	    
 	}

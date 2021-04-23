@@ -19,9 +19,8 @@
 
 
 	<div id="bodyContent">
-		<div class="col-4 offset-4">
+		<div>
 			<div class="text-center">
-				<h1>Create a donation</h1>
 				<br>
 				<div id="typeContainer">
 					<h2>What type of donation are you submitting?</h2>
