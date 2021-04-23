@@ -127,7 +127,7 @@ public class UtilDB {
 	      try {
 	    	  
 	         tx = session.beginTransaction();
-	         String select = keyword.isEmpty() ? "" : " WHERE name LIKE '" + keyword + "%'"; 
+	         String select = keyword.isEmpty() ? "" : " WHERE name LIKE '%" + keyword + "%'"; 
 	         List<?> posts = session.createQuery("FROM Posting" + select ).list();
 	         
 	         for (Iterator<?> iterator = posts.iterator(); iterator.hasNext();) {

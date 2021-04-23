@@ -15,9 +15,36 @@ h1 {
 	height: 100px;
 	line-height: 100px;
 }
-nav {
-	background-color: #DEF0F8;
-	color: #023047;
+.nav-aux {
+	background-color: #023047 ;
+	color: #FFFFFF;
+}
+
+.aux{
+	color: #FFFFFF;
+	display: inline-block;
+	border-radius: 40px/30px;
+	padding: 0.5rem 1rem;
+}
+
+.aux-home{
+	color: #FFFFFF;
+	display: inline-block;
+	border-radius: 40px/30px;
+	padding: 0.5rem 1rem;
+}
+
+.aux-home:hover{
+	cursor: pointer;
+	text-decoration: none;
+	color:#FFFFFF;
+}
+
+.aux:hover{
+	cursor: pointer;
+	text-decoration: none;
+	background-color: #FFFFFF;
+	color:#023047;
 }
 
 section {
@@ -29,9 +56,8 @@ section {
     float:left;	 	 
 }
 
-button {
+.button, button {
 	background-color: #FFBA0A;
-	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -40,9 +66,71 @@ button {
 	cursor: pointer;
 }
 
+footer {
+    background-color:#000000;
+    color:#FFFFFF;
+    text-align:center;
+    padding:5px;
+    height:20px;
+    width: 100%;	 	 
+}
+
 #container {
   height: 100%;
   width: 100%;
   display: flex;
+}
+
+.home{
+	background-color:  #023047;
+	color:  #FFFFFF;
+	height: 100vh;
+	margin: 0;
+	text-align: center;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	
+}
+
+.home-title{
+	font-size: 72px;
+	font-weight: 900;
+}
+
+.home-tag{
+	font-size: 18px;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.home-link{
+	display: inline-block;
+	border-radius: 40px/30px;
+	padding: 0.5rem 1rem;
+	color:  #FFFFFF;
+}
+
+.home-link:hover{
+	cursor: pointer;
+	text-decoration: none;
+	background-color: #FFFFFF;
+	color: #023047;
+}
+
+.home-nav{
+	position: absolute;
+	right: 10px;
+	top: 18px;
+}
+
+.card-header{
+	background-color:  #023047;
+	color: #FFFFFF;
+}
+
+.card-body{
+	background-color: #DEF0F8;
 }
 

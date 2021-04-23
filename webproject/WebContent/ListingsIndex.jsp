@@ -18,17 +18,21 @@
     	
     <%@ include file= "Navbar_LoggedIn.jsp" %>
     
-	<h1 class="text-center">Listings</h1>
 	<br>
-
-    <a class="nav-link" href="/webproject/Search.jsp">Search Listings</a>
+	<div class="search-container">
+    	<form action="SimpleFormSearch" method="POST">
+      		<input type="text" placeholder="Search" name="keyword">
+      		<button type="submit"><i class="fa fa-search"></i></button>
+    	</form>
+  	</div>
+  	<br>
 
 	<div class="container">
 		<div class="row" id="listings">
 			
 			<c:forEach items="${posts}" var="post">
 
-				<div class="col-4">
+				<div class="col-4 mt-3">
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">${post.name}</h5>

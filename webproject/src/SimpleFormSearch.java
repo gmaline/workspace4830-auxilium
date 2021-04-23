@@ -34,7 +34,7 @@ public class SimpleFormSearch extends HttpServlet {
 	
 		request.setAttribute("posts", posts);
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchResults.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/ListingsIndex.jsp");
 		rd.forward(request, response);
    }
 
