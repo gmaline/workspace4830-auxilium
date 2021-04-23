@@ -80,7 +80,7 @@ public class ProcessDonation extends HttpServlet {
 			}
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("DonationThankYou.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("ListingsIndex");
 		rd.forward(request, response);
 	}
 
