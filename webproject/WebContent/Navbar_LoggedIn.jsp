@@ -22,7 +22,7 @@
         <ul class="navbar-nav ml-auto">
         
    			<li class="nav-item">
-            	<a class="nav-link aux" href="Profile">Profile</a>
+            	<a class="nav-link" href="Profile">Profile <span class="badge badge-primary" id="notifications"></span></a>
             </li>
             <li class="nav-item">
             	<a class="nav-link aux" href="LogOut" >Log Out</a>

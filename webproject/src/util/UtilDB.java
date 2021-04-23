@@ -191,6 +191,100 @@ public class UtilDB {
 	   }
    }
    
+ public static List<Notification> getNotificationsForUser(User user) {
+	 List<Notification> resultList = new ArrayList<Notification>();
+
+     Session session = getSessionFactory().openSession();
+     Transaction tx = null;
+
+     try {
+        tx = session.beginTransaction();
+        List<?> notifications = session.createQuery("FROM Notification").list();
+        for (Iterator<?> iterator = notifications.iterator(); iterator.hasNext();) {
+           Notification notif = (Notification) iterator.next();
+           if (notif.getNotified().getId() == user.getId()) {
+        	   resultList.add(notif);
+           }
+        }
+        tx.commit();
+     } catch (HibernateException e) {
+        if (tx != null)
+           tx.rollback();
+        e.printStackTrace();
+     } finally {
+        session.close();
+     }
+     return resultList;
+  }
+ 
+ public static List<Notification> getNotificationsByPost(Posting post) {
+	 List<Notification> resultList = new ArrayList<Notification>();
+
+     Session session = getSessionFactory().openSession();
+     Transaction tx = null;
+
+     try {
+        tx = session.beginTransaction();
+        List<?> notifications = session.createQuery("FROM Notification").list();
+        for (Iterator<?> iterator = notifications.iterator(); iterator.hasNext();) {
+           Notification notif = (Notification) iterator.next();
+           if (notif.getDonation().getId() == post.getId()) {
+        	   resultList.add(notif);
+           }
+        }
+        tx.commit();
+     } catch (HibernateException e) {
+        if (tx != null)
+           tx.rollback();
+        e.printStackTrace();
+     } finally {
+        session.close();
+     }
+     return resultList;
+  }
+ 
+ public static Notification getNotificationById(Integer id) {
+	 Notification result = new Notification();
+
+     Session session = getSessionFactory().openSession();
+     Transaction tx = null;
+
+     try {
+        tx = session.beginTransaction();
+        List<?> notifications = session.createQuery("FROM Notification WHERE id=" + id).list();
+        result = (Notification) notifications.get(0);
+        tx.commit();
+     } catch (HibernateException e) {
+        if (tx != null)
+           tx.rollback();
+        e.printStackTrace();
+     } finally {
+        session.close();
+     }
+     return result;
+  }
+ 
+ public static Integer removeNotification(Notification notif) {
+	 	Integer result = -1;
+	 	
+	   Session session = getSessionFactory().openSession();
+	   Transaction tx = null;
+	   
+	   try {
+	         tx = session.beginTransaction();
+	         session.delete(notif);
+	         tx.commit();
+
+	   } catch (HibernateException e) {
+		   if (tx != null) {
+			   tx.rollback();
+		   }
+		   e.printStackTrace();
+	   } finally {
+		   session.close();
+	   }
+	   return result;
+}
    
  public static Integer removePosting(Posting post) {
 	 	Integer result = -1;
