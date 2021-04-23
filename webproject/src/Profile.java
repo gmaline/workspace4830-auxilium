@@ -3,7 +3,7 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 //import java.util.List;
-
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,46 +47,29 @@ public class Profile extends HttpServlet {
 	        String age = Integer.toString(user.getAge());
 	        String org = user.getOrganization().toString(); //Already says "Organization:"
 	        String role = user.getRole().getName(); //Already says "Role:"
-	        
-    		response.setContentType("text/html");
- 	        PrintWriter out = response.getWriter();
  	        String title = "Account Profile";
-    		request.getRequestDispatcher("/Header.jsp").include(request, response);
-    		request.getRequestDispatcher("/Navbar_LoggedIn.jsp").include(request, response);
 
-	        out.println("<title>Profile Page</title>\r\n"
-	              + "</head>\r\n"
-	              + "<div>\r\n"
-	              + "	<h1>" + title + "</h1>\r\n"
-	              + "	\r\n"
-	              + "	</div>"
-	              + "<body>\r\n"
-	              + "	<main>\r\n"
-	              + "	<div id=\"container\">\r\n"
-	              + "		\r\n"
-	              + "		<div style=\"width:100%\" >"
-	              + "<section>\r\n"
-	              + "<br />"
-	              + "\r\n Full Name: " + fullName + "<br />"
-	              + "<br />"
-	              + "\r\n Email: " + email + "<br />"
-	              + "<br />"
-	              + "\r\n Age: " + age + "<br />"
-	              + "<br />"
-	              + "\r\n Role: " + role + "<br />"
-	              + "<br />"
-	              + "\r\n" + org + "<br />"
-	              + "<br />"
-	              + "</section>\r\n"
-	              + "	\r\n"
-	              + "		</div>\r\n"
-	              + "		\r\n"
-	              + "	</div>\r\n"
-	              + "	</main>\r\n"
-	              + "</body>\r\n"
-	              + "</html>"
-	        						);  
-    		request.getRequestDispatcher("/Footer.jsp").include(request, response); 
+    		List<Notification> notifs = UtilDB.getNotificationsForUser(user);    		
+    		String notifications = "";
+    		
+    		if (notifs != null) {
+    			notifications = "You have requests on the following items: ";
+    			for (int i = 0; i < notifs.size(); i++) {
+    				notifications += notifs.get(i).getDonation().getName() + ", ";
+    			}
+    		}
+    		
+    		request.setAttribute("fullName", fullName);
+    		request.setAttribute("age", age);
+    		request.setAttribute("org", org);
+    		request.setAttribute("role", role);
+    		request.setAttribute("title", title);
+    		request.setAttribute("notifications", notifications);
+    		request.setAttribute("notifs", notifs);
+    		
+    		RequestDispatcher rd = getServletContext().getRequestDispatcher("/Profile.jsp");
+    		rd.forward(request, response);
+    		
 	     }
 		 else //If the User NOt Logged In, go back to Homepage
 		 {

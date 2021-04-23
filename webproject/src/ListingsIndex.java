@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.JsonObject;
 
 import util.UtilDB;
+import datamodel.Notification;
 import datamodel.Posting;
 
 
@@ -38,7 +39,14 @@ public class ListingsIndex extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		List<Posting> posts = UtilDB.listPostings();
-
+		
+		for (int i = posts.size() - 1; i >= 0 ; i--) {
+			List<Notification> notifs = UtilDB.getNotificationsByPost(posts.get(i));
+			if (notifs.size() > 0) {
+				posts.remove(i);
+			}
+		}
+				
 		request.setAttribute("posts", posts);
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/ListingsIndex.jsp");

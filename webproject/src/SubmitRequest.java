@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,18 +37,52 @@ public class SubmitRequest extends HttpServlet {
 		
 		String id = request.getParameter("item");
 		
+		HttpSession session = request.getSession();
+        String email = (String)session.getAttribute("email");
+        User asker = UtilDB.FindUser(email);	//Get the currently logged in User
+		
 		try {
 			int item = ((Number)NumberFormat.getInstance().parse(id)).intValue(); //gets the integer value from the String
 			
 			Posting post = new Posting();
 			post = UtilDB.FindListing(item);
 			
-			//System.out.println(post.toString());
+			List<Notification> notifs = UtilDB.getNotificationsByPost(post);
 		
-			if(post != null) {		//Item Found
-				HttpSession session = request.getSession();
-		        String email = (String)session.getAttribute("email");
-		        User asker = UtilDB.FindUser(email);	//Get the currently logged in User
+			if(post == null) {		//Item Not Found
+				response.setContentType("text/html");
+		 	    PrintWriter out = response.getWriter();
+		 	     
+		 	    String someMessage = "Item not found!\\nDouble Check Item Number";
+		 	    out.println("<script type='text/javascript'>");
+		 	    out.println("alert(" + "'" + someMessage + "'" + ");");
+		 	    out.println("location='Request.jsp';");
+		 	    out.println("</script>");
+		 	    out.println("</head><body></body></html>");
+			}
+			else if (asker.getId() == post.getUser().getId()) {
+				response.setContentType("text/html");
+		 	    PrintWriter out = response.getWriter();
+		 	    
+				String someMessage = "Cannot request your own item";
+		 	    out.println("<script type='text/javascript'>");
+		 	    out.println("alert(" + "'" + someMessage + "'" + ");");
+		 	    out.println("location='Request.jsp';");
+		 	    out.println("</script>");
+		 	    out.println("</head><body></body></html>");
+			}
+			else if (notifs.size() != 0) { //Item has already been requested
+				response.setContentType("text/html");
+		 	    PrintWriter out = response.getWriter();
+		 	    
+				String someMessage = "Listing already requested";
+		 	    out.println("<script type='text/javascript'>");
+		 	    out.println("alert(" + "'" + someMessage + "'" + ");");
+		 	    out.println("location='Request.jsp';");
+		 	    out.println("</script>");
+		 	    out.println("</head><body></body></html>");
+			}
+			else {	//Item Found and not yet requested
 		        
 		        User donor = post.getUser();		//Get the user that donated the Item
 		        String donorName = donor.getFirstName() + " " + donor.getLastName();
@@ -98,24 +133,8 @@ public class SubmitRequest extends HttpServlet {
 		              + "</body>\r\n"
 		              + "</html>"
 		        						);  
-	    		request.getRequestDispatcher("/Footer.jsp").include(request, response); 
-	    		
-	    	//	UtilDB.removePosting(item);	TODO
-	    	//Once an Item has been requested, remove it from the Database
-	    	//:TODO  @Logan is working on this. No need to 
+	    		request.getRequestDispatcher("/Footer.jsp").include(request, response);
 			}
-			else {	//Item Not Found
-  				 response.setContentType("text/html");
-		 	     PrintWriter out = response.getWriter();
-		 	     
-		 	     String someMessage = "ITEM NOT FOUND!\\nDouble Check Item Number";
-		 	     out.println("<script type='text/javascript'>");
-		 	     out.println("alert(" + "'" + someMessage + "'" + ");");
-		 	     out.println("location='Request.jsp';");
-		 	     out.println("</script>");
-		 	     out.println("</head><body></body></html>");
-			}
-			
 		} 
 		catch (ParseException e) {
 			e.printStackTrace();
