@@ -27,7 +27,7 @@
 			</div>
 			<br>
 			<div class="home-tag">
-				Insert Catchy tagline here
+				Where Students And Organizations Can Connect And Help Those In Need
 			</div>
 			
 			<div class="home-links">

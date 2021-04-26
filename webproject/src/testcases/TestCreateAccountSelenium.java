@@ -26,7 +26,7 @@ public class TestCreateAccountSelenium {
 
   @Test
   public void testCreateAccount() throws Exception {
-    driver.get("http://localhost:8081/webproject/LogOut");
+    driver.get("http://localhost:8080/webproject/LogOut");
     driver.findElement(By.xpath("//body")).click();
     driver.findElement(By.linkText("Register")).click();
     driver.findElement(By.name("firstName")).click();
@@ -47,6 +47,7 @@ public class TestCreateAccountSelenium {
     driver.findElement(By.id("input")).clear();
     driver.findElement(By.id("input")).sendKeys("pass");
     driver.findElement(By.xpath("//input[@value='Submit']")).click();
+	Thread.sleep(4000);
   }
 
   @After
