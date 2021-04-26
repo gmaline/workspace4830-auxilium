@@ -28,7 +28,10 @@ public class TestAuxilium_WithKatalon {
   @Test
   public void testAuxilium() throws Exception {
     driver.get("http://royalhunter.ddns.net:8080/webproject/HomePage.jsp");
-    driver.findElement(By.linkText("Auxilium")).click();
+   // driver.findElement(By.linkText("Auxilium")).click();
+ 
+    String page = driver.getTitle();
+    Assert.assertEquals(page, "Home Page");
   }
 
   @After

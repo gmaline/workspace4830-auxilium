@@ -48,8 +48,19 @@ public class SubmitRequest extends HttpServlet {
 			post = UtilDB.FindListing(item);
 			
 			List<Notification> notifs = UtilDB.getNotificationsByPost(post);
-		
-			if(post == null) {		//Item Not Found
+			
+			if(!asker.getRole().getRequest()) { //If user cannot request
+				response.setContentType("text/html");
+		 	    PrintWriter out = response.getWriter();
+		 	     
+		 	    String someMessage = "Individuals are NOT allowed to Request Items\\nMust be with an Organization to Request Items";
+		 	    out.println("<script type='text/javascript'>");
+		 	    out.println("alert(" + "'" + someMessage + "'" + ");");
+		 	    out.println("location='HomePage.jsp';");
+		 	    out.println("</script>");
+		 	    out.println("</head><body></body></html>");
+			}
+			else if(post == null) {		//Item Not Found
 				response.setContentType("text/html");
 		 	    PrintWriter out = response.getWriter();
 		 	     

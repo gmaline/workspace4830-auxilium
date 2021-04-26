@@ -35,13 +35,16 @@ public class TestAuxilium {
 	@Test
 	public void testAuxilium() throws Exception {
 		driver.get("http://royalhunter.ddns.net:8080/webproject/HomePage.jsp");
-		Thread.sleep(2000);
+		Thread.sleep(500);
 		
-		driver.findElement(By.linkText("Auxilium")).click();
+//		driver.findElement(By.linkText("Auxilium")).click();
 		
 		String actualUrl= "http://royalhunter.ddns.net:8080/webproject/HomePage.jsp";
 		String expectedUrl= driver.getCurrentUrl();
 		Assert.assertEquals(actualUrl, expectedUrl);
+		
+		String page = driver.getTitle();
+	    Assert.assertEquals(page, "Home Page");
 	}
 	
 	@After
