@@ -25,15 +25,16 @@ public class TestProfile {
 	}
 	
 	 public void doLogin() throws Exception {
-		    driver.get("http://royalhunter.ddns.net:8080/webproject/HomePage.jsp");
+		 driver.get("http://royalhunter.ddns.net:8080/webproject/SignIn.jsp");
 		    driver.findElement(By.linkText("Login")).click();
-		    driver.findElement(By.name("email")).click();
-		    driver.findElement(By.name("email")).clear();
-		    driver.findElement(By.name("email")).sendKeys("afolly@unomaha.edu");
-		    driver.findElement(By.id("input")).clear();
-		    driver.findElement(By.id("input")).sendKeys("Auxilium");
+		    driver.findElement(By.id("email")).click();
+		    driver.findElement(By.id("email")).clear();
+		    driver.findElement(By.id("email")).sendKeys("mp@kids.net");
+		    driver.findElement(By.id("password")).clear();
+		    driver.findElement(By.id("password")).sendKeys("mariepop");
 		    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
 		    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+		      Thread.sleep(1000);
 		    driver.findElement(By.xpath("//input[@value='Submit']")).click();
 	}
 	 
@@ -52,6 +53,9 @@ public class TestProfile {
 	      String result = findElement.getText();
 	      Assert.assertEquals(expected, result);
 	      Thread.sleep(2000);
+	      
+	      String page = driver.getTitle();
+	 	 Assert.assertEquals(page, "Profile Page");
 	      
 	      driver.findElement(By.linkText("Auxilium")).click();
 	      Thread.sleep(1000);

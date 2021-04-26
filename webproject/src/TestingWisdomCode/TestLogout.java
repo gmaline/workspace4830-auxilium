@@ -34,13 +34,13 @@ public class TestLogout {
    }
 
    public void doLogin() throws Exception {
-	    driver.get("http://royalhunter.ddns.net:8080/webproject/HomePage.jsp");
+	   driver.get("http://royalhunter.ddns.net:8080/webproject/SignIn.jsp");
 	    driver.findElement(By.linkText("Login")).click();
-	    driver.findElement(By.name("email")).click();
-	    driver.findElement(By.name("email")).clear();
-	    driver.findElement(By.name("email")).sendKeys("afolly@unomaha.edu");
-	    driver.findElement(By.id("input")).clear();
-	    driver.findElement(By.id("input")).sendKeys("Auxilium");
+	    driver.findElement(By.id("email")).click();
+	    driver.findElement(By.id("email")).clear();
+	    driver.findElement(By.id("email")).sendKeys("mp@kids.net");
+	    driver.findElement(By.id("password")).clear();
+	    driver.findElement(By.id("password")).sendKeys("mariepop");
 	    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
 	    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
 	      Thread.sleep(1000);
@@ -51,18 +51,20 @@ public class TestLogout {
    public void testLogout() throws Exception {
       doLogin();
       
-    String actualUrl= "http://royalhunter.ddns.net:8080/webproject/HomePage.jsp";
+    String actualUrl= "http://royalhunter.ddns.net:8080/webproject/Profile";
 	String expectedUrl= driver.getCurrentUrl();
 	Assert.assertEquals(actualUrl, expectedUrl);
 	
 	
-      driver.findElement(By.linkText("Log Out")).click();
+    driver.findElement(By.linkText("Log Out")).click();
       Thread.sleep(2000);
       
      actualUrl= "http://royalhunter.ddns.net:8080/webproject/LogOut";
 	 expectedUrl= driver.getCurrentUrl();
 	 Assert.assertEquals(actualUrl, expectedUrl);
 		
+	 String page = driver.getTitle();
+	 Assert.assertEquals(page, "Home Page");
 	
       String expected = "Login";
       WebElement findElement = driver.findElement(By.linkText("Login"));

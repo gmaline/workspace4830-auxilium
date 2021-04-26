@@ -28,41 +28,67 @@ public class TestRequest_WithKatalon {
 
   @Test
   public void testRequest() throws Exception {
-    driver.get("http://royalhunter.ddns.net:8080/webproject/HomePage.jsp");
-    driver.findElement(By.linkText("Request")).click();
-    driver.findElement(By.name("email")).click();
-    driver.findElement(By.name("email")).clear();
-    driver.findElement(By.name("email")).sendKeys("afolly@unomaha.edu");
-    driver.findElement(By.id("input")).click();
-    driver.findElement(By.id("input")).clear();
-    driver.findElement(By.id("input")).sendKeys("Auxilium");
-    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
-    driver.findElement(By.xpath("//input[@value='Submit']")).click();
-    driver.findElement(By.linkText("Request")).click();
-    driver.findElement(By.id("id")).click();
-    driver.findElement(By.id("id")).clear();
-/*    
-    try {
-    driver.findElement(By.id("id")).sendKeys("0");
-    driver.findElement(By.name("requester")).click();
-    driver.findElement(By.xpath("//input[@value='Submit']")).click();
-    driver.findElement(By.name("requester")).click();
-    }catch (UnhandledAlertException e) {
-         e.printStackTrace();	}
-    
-   try {
-    driver.findElement(By.id("id")).clear();
-    driver.findElement(By.id("id")).sendKeys("-1");
-    driver.findElement(By.xpath("//input[@value='Submit']")).click();
-    driver.findElement(By.name("requester")).click();
-    }catch (UnhandledAlertException e) {
-         e.printStackTrace();	}
-    
-*/    
-    driver.findElement(By.id("id")).clear();
-    driver.findElement(By.id("id")).sendKeys("22");
-    driver.findElement(By.xpath("//input[@value='Submit']")).click();
-    driver.findElement(By.linkText("Auxilium")).click();
+		 driver.get("http://royalhunter.ddns.net:8080/webproject/HomePage.jsp");
+	    driver.findElement(By.linkText("Login")).click();
+	    driver.findElement(By.id("email")).click();
+	    driver.findElement(By.id("email")).clear();
+	    driver.findElement(By.id("email")).sendKeys("mp@kids.net");
+	    driver.findElement(By.id("password")).click();
+	    driver.findElement(By.id("password")).clear();
+	    driver.findElement(By.id("password")).sendKeys("mariepop");
+	    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+	    driver.findElement(By.xpath("//input[@value='Submit']")).click();
+	    driver.findElement(By.linkText("Donate")).click();
+	    driver.findElement(By.id("type")).click();
+	    new Select(driver.findElement(By.id("type"))).selectByVisibleText("Other");
+	    driver.findElement(By.id("type")).click();
+	    driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
+	    driver.findElement(By.id("name")).click();
+	    driver.findElement(By.id("name")).clear();
+	    driver.findElement(By.id("name")).sendKeys("Umbrella");
+	    driver.findElement(By.id("quality")).click();
+	    new Select(driver.findElement(By.id("quality"))).selectByVisibleText("Heavily Used");
+	    driver.findElement(By.id("quality")).click();
+	    driver.findElement(By.id("description")).click();
+	    driver.findElement(By.id("description")).clear();
+	    driver.findElement(By.id("description")).sendKeys("It flies");
+	    driver.findElement(By.xpath("//input[@value='Submit']")).click();
+	    driver.findElement(By.xpath("(//a[contains(text(),'View')])[4]")).click();
+	    
+	    driver.findElement(By.linkText("Listings")).click();
+	    driver.findElement(By.linkText("Log Out")).click();
+	    driver.findElement(By.linkText("Login")).click();
+	    driver.findElement(By.id("email")).click();
+	    driver.findElement(By.id("email")).clear();
+	    driver.findElement(By.id("email")).sendKeys("godofthunder@avengers.com");
+	    driver.findElement(By.id("password")).clear();
+	    driver.findElement(By.id("password")).sendKeys("StrongestAvenger");
+	    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+	    driver.findElement(By.xpath("//input[@value='Submit']")).click();
+	    driver.findElement(By.linkText("Listings")).click();
+	    driver.findElement(By.xpath("(//a[contains(text(),'View')])[4]")).click();
+	    driver.findElement(By.linkText("Request")).click();
+	    driver.findElement(By.id("id")).click();
+	    driver.findElement(By.id("id")).clear();
+	    driver.findElement(By.id("id")).sendKeys("12"); //:TODO every time you run it
+	    driver.findElement(By.xpath("//input[@value='Submit']")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.linkText("Auxilium")).click();
+	    driver.findElement(By.linkText("Log Out")).click();
+	    driver.findElement(By.linkText("Login")).click();
+	    driver.findElement(By.xpath("//div[@id='container']/div/div[2]")).click();
+	    driver.findElement(By.id("email")).click();
+	    driver.findElement(By.id("email")).clear();
+	    driver.findElement(By.id("email")).sendKeys("mp@kids.net");
+	    driver.findElement(By.id("password")).click();
+	    driver.findElement(By.id("password")).clear();
+	    driver.findElement(By.id("password")).sendKeys("mariepop");
+	    try {
+	    driver.findElement(By.xpath("//input[@value='Submit']")).click();
+	    driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
+	    driver.findElement(By.id("acceptRequest")).click();
+	    driver.findElement(By.linkText("Log Out")).click();
+	    }catch (Exception e) { /*Ignore*/ };
   }
 
   @After

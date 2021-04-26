@@ -390,7 +390,13 @@ public class UtilDB {
 	      try {
 	         tx = session.beginTransaction();
 	         //TODO handle giving different roles different access.
-	         session.save(new Role(name, true, true));
+	         if(name.equalsIgnoreCase("organization"))	{
+	        	 session.save(new Role(name, true, true));
+	         }
+	         else if(name.equalsIgnoreCase("student")) 	{
+	        	 session.save(new Role(name, true, false));
+	         }
+	         
 	         tx.commit();
 	      } catch (HibernateException e) {
 	         if (tx != null)

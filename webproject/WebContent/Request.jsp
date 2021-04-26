@@ -1,4 +1,6 @@
 <%@ include file="Header.jsp" %>
+<%@ page language="java" import="util.UtilDB" %>
+
 <title>Request Page</title>
 </head>
 
@@ -12,7 +14,15 @@
 		 out.println("alert('You MUST Log In To Make a REQUEST!');");
 		 out.println("location='SignIn.jsp';");
 		 out.println("</script>");
-	} %>
+	} 
+		else if(!UtilDB.FindUser(user).getRole().getRequest()) { //If user cannot request
+	 	response.setContentType("text/html");
+ 	    String someMessage = "Individuals are NOT allowed to Request Items\\nMust be with an Organization to Request Items";
+ 	    out.println("<script type='text/javascript'>");
+ 	    out.println("alert(" + "'" + someMessage + "'" + ");");
+ 	    out.println("location='HomePage.jsp';");
+ 	    out.println("</script>");
+	}%>
 
 <%@ include file="Navbar_LoggedIn.jsp" %>
 	<main>
