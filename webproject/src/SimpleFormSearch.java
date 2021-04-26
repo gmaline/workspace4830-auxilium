@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datamodel.Notification;
 import datamodel.Posting;
 import util.UtilDB;
 
@@ -31,7 +32,14 @@ public class SimpleFormSearch extends HttpServlet {
 
 		
 	   List<Posting> posts = UtilDB.FindListing(keyword);
-	
+		
+		for (int i = posts.size() - 1; i >= 0 ; i--) {
+			List<Notification> notifs = UtilDB.getNotificationsByPost(posts.get(i));
+			if (notifs.size() > 0) {
+				posts.remove(i);
+			}
+		}
+				
 		request.setAttribute("posts", posts);
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/ListingsIndex.jsp");
