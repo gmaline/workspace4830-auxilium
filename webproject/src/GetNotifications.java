@@ -39,6 +39,8 @@ public class GetNotifications extends HttpServlet {
 		List<Notification> notifs = UtilDB.getNotificationsForUser(user);
 
 		response.getWriter().write(String.valueOf(notifs.size()));
+		
+		int x = 1;
 	}
 
 	/**
