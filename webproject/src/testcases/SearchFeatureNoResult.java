@@ -40,15 +40,15 @@ public class SearchFeatureNoResult {
     driver.findElement(By.name("keyword")).click();
     driver.findElement(By.name("keyword")).clear();
     driver.findElement(By.name("keyword")).sendKeys("green");
-	Thread.sleep(3000);
+	Thread.sleep(1000);
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-	Thread.sleep(3000);
+	Thread.sleep(1000);
     driver.findElement(By.name("keyword")).click();
     driver.findElement(By.name("keyword")).clear();
     driver.findElement(By.name("keyword")).sendKeys("purple");
-	Thread.sleep(3000);
+	Thread.sleep(1000);
     driver.findElement(By.xpath("//i")).click();
-	Thread.sleep(2000);
+	Thread.sleep(1000);
   }
 
   @After

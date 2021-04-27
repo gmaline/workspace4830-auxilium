@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class SearchFeatureWithResults {
+public class TestLogout_WithKatalon {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -18,36 +18,27 @@ public class SearchFeatureWithResults {
 
   @Before
   public void setUp() throws Exception {
-	  System.setProperty("webdriver.chrome.driver", "lib/win/chromedriver.exe");
-	  driver = new ChromeDriver();
+	System.setProperty("webdriver.chrome.driver", "lib/win/chromedriver.exe");
+    driver = new ChromeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testSearchFeatureWithResults() throws Exception {
-    driver.get("http://localhost:8080/webproject/LogOut");
+  public void testLogOut() throws Exception {
+	driver.get("http://localhost:8080/webproject/SignIn.jsp");
     driver.findElement(By.linkText("Login")).click();
     driver.findElement(By.id("email")).click();
     driver.findElement(By.id("email")).clear();
-    driver.findElement(By.id("email")).sendKeys("kp@live.com");
-    driver.findElement(By.xpath("//div[@id='container']/div/div[2]/form/div[2]/div")).click();
-    driver.findElement(By.id("password")).click();
+    driver.findElement(By.id("email")).sendKeys("tester2@test.edu");
     driver.findElement(By.id("password")).clear();
-    driver.findElement(By.id("password")).sendKeys("password");
+    driver.findElement(By.id("password")).sendKeys("pass");
+    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
     driver.findElement(By.xpath("//input[@value='Submit']")).click();
-    driver.findElement(By.linkText("Listings")).click();
-    driver.findElement(By.name("keyword")).click();
-    driver.findElement(By.name("keyword")).clear();
-    driver.findElement(By.name("keyword")).sendKeys("red");
-	Thread.sleep(1000);
-    driver.findElement(By.xpath("//i")).click();
-    driver.findElement(By.name("keyword")).click();
-    driver.findElement(By.name("keyword")).clear();
-    driver.findElement(By.name("keyword")).sendKeys("notebook");
-	Thread.sleep(1000);
-    driver.findElement(By.xpath("//button[@type='submit']")).click();
-	Thread.sleep(1000);
+    Thread.sleep(1000);
+    driver.findElement(By.linkText("Log Out")).click();
+    Thread.sleep(1000);
   }
 
   @After

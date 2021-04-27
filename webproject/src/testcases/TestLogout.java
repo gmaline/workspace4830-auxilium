@@ -1,4 +1,4 @@
-package TestingWisdomCode;
+package testcases;
 
 import java.util.regex.Pattern;
 

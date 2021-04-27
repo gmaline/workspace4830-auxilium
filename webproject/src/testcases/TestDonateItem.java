@@ -76,11 +76,12 @@ public class TestDonateItem {
     driver.findElement(By.linkText("Login")).click();
     driver.findElement(By.id("email")).click();
     driver.findElement(By.id("email")).clear();
-    driver.findElement(By.id("email")).sendKeys("test@test.com");
+    driver.findElement(By.id("email")).sendKeys("tester2@test.edu");
     driver.findElement(By.id("password")).click();
     driver.findElement(By.id("password")).clear();
-    driver.findElement(By.id("password")).sendKeys("test");
+    driver.findElement(By.id("password")).sendKeys("pass");
     driver.findElement(By.xpath("//input[@value='Submit']")).click();
+    Thread.sleep(1000);
   }
 
   private boolean isElementPresent(By by) {

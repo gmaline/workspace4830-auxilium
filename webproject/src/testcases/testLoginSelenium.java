@@ -29,14 +29,14 @@ public class testLoginSelenium {
     driver.findElement(By.linkText("Login")).click();
     driver.findElement(By.id("email")).click();
     driver.findElement(By.id("email")).clear();
-    driver.findElement(By.id("email")).sendKeys("test@test.edu");
+    driver.findElement(By.id("email")).sendKeys("tester3@test.edu");
     driver.findElement(By.id("password")).click();
     driver.findElement(By.id("password")).clear();
     driver.findElement(By.id("password")).sendKeys("pass");
     driver.findElement(By.xpath("//input[@type='checkbox']")).click();
     driver.findElement(By.xpath("//input[@type='checkbox']")).click();
     driver.findElement(By.xpath("//input[@value='Submit']")).click();
-	Thread.sleep(4000);
+	Thread.sleep(2000);
   }
 
   @After

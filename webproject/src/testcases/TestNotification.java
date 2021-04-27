@@ -20,21 +20,27 @@ public class TestNotification {
   public void setUp() throws Exception {
 	  System.setProperty("webdriver.chrome.driver", "lib/win/chromedriver.exe");
 	  driver = new ChromeDriver();
-	  baseUrl = "https://www.google.com/";
-	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    baseUrl = "https://www.google.com/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
   public void testNotification() throws Exception {
-	doLogin();	//Login as Fake Person
-	createDonation(); //Create a Donation as Fake Person
-	requestItem(); //Login as Logan Wood and request the item that was made
-	doLogin(); //Login as Fake Person again
-	 
-	//Test notification
-    driver.get("http://localhost:8080/webproject/Profile");
+    driver.get("http://localhost:8080/webproject/LogOut");
+    driver.findElement(By.linkText("Login")).click();
+    driver.findElement(By.id("email")).click();
+    driver.findElement(By.id("email")).clear();
+    driver.findElement(By.id("email")).sendKeys("kp@live.com");
+    driver.findElement(By.id("password")).clear();
+    driver.findElement(By.id("password")).sendKeys("password");
+    driver.findElement(By.xpath("//input[@value='Submit']")).click();
+    driver.findElement(By.linkText("Profile 5")).click();
     driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
     driver.findElement(By.id("acceptRequest")).click();
+    driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
+    driver.findElement(By.id("denyRequest")).click();
+    driver.findElement(By.linkText("Listings")).click();
+    driver.findElement(By.xpath("//div[@id='listings']/div/div/div")).click();
   }
 
   @After
@@ -44,45 +50,6 @@ public class TestNotification {
     if (!"".equals(verificationErrorString)) {
       fail(verificationErrorString);
     }
-  }
-  
-  private void doLogin() throws Exception{
-	driver.get("http://localhost:8080/webproject/LogOut");
-    driver.findElement(By.linkText("Login")).click();
-    driver.findElement(By.id("email")).click();
-    driver.findElement(By.id("email")).clear();
-    driver.findElement(By.id("email")).sendKeys("test@test.com");
-    driver.findElement(By.id("password")).click();
-    driver.findElement(By.id("password")).clear();
-    driver.findElement(By.id("password")).sendKeys("test");
-    driver.findElement(By.xpath("//input[@value='Submit']")).click();
-  }
-  
-  private void createDonation() throws Exception{
-	driver.get("http://localhost:8080/webproject/Donation.jsp");
-    driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
-    driver.findElement(By.id("name")).click();
-    driver.findElement(By.id("name")).clear();
-    driver.findElement(By.id("name")).sendKeys("test book");
-    driver.findElement(By.id("description")).click();
-    driver.findElement(By.id("description")).clear();
-    driver.findElement(By.id("description")).sendKeys("book");
-    driver.findElement(By.xpath("//input[@value='Submit']")).click();
-  }
-
-  private void requestItem() throws Exception{
-	driver.get("http://localhost:8080/webproject/LogOut");
-    driver.findElement(By.linkText("Login")).click();
-    driver.findElement(By.id("email")).click();
-    driver.findElement(By.id("email")).clear();
-    driver.findElement(By.id("email")).sendKeys("lwood@auxilium.com");
-    driver.findElement(By.id("password")).click();
-    driver.findElement(By.id("password")).clear();
-    driver.findElement(By.id("password")).sendKeys("password");
-    driver.findElement(By.xpath("//input[@value='Submit']")).click();
-    driver.findElement(By.linkText("Listings")).click();
-    driver.findElement(By.xpath("(//a[contains(text(),'View')])[2]")).click();
-    driver.findElement(By.xpath("//input[@value='Request this item']")).click();
   }
 
   private boolean isElementPresent(By by) {

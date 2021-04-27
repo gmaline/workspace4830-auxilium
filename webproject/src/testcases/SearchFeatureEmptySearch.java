@@ -37,13 +37,13 @@ public class SearchFeatureEmptySearch {
     driver.findElement(By.xpath("//input[@value='Submit']")).click();
     driver.findElement(By.linkText("Listings")).click();
     driver.findElement(By.xpath("//i")).click();
-	Thread.sleep(3000);
+	Thread.sleep(1000);
     driver.findElement(By.name("keyword")).click();
     driver.findElement(By.name("keyword")).clear();
     driver.findElement(By.name("keyword")).sendKeys("blue");
     driver.findElement(By.xpath("//i")).click();
     driver.findElement(By.xpath("//i")).click();
-	Thread.sleep(3000);
+	Thread.sleep(1000);
   }
 
   @After

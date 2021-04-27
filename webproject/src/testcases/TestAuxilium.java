@@ -1,4 +1,4 @@
-package TestingWisdomCode;
+package testcases;
 
 import static org.junit.Assert.fail;
 

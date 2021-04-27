@@ -1,4 +1,4 @@
-package TestingWisdomCode;
+package testcases;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -27,11 +27,12 @@ public class TestAuxilium_WithKatalon {
 
   @Test
   public void testAuxilium() throws Exception {
-    driver.get("http://royalhunter.ddns.net:8080/webproject/HomePage.jsp");
+    driver.get("http://localhost:8080/webproject/HomePage.jsp");
    // driver.findElement(By.linkText("Auxilium")).click();
- 
+    Thread.sleep(1000);
     String page = driver.getTitle();
     Assert.assertEquals(page, "Home Page");
+    Thread.sleep(1000);
   }
 
   @After

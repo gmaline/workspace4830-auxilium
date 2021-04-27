@@ -1,4 +1,5 @@
-package TestingWisdomCode;
+package testcases;
+
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -10,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class TestProfile_WithKatalon {
+public class RequestItemID {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -19,25 +20,29 @@ public class TestProfile_WithKatalon {
   @Before
   public void setUp() throws Exception {
 	  System.setProperty("webdriver.chrome.driver", "lib/win/chromedriver.exe");
-      driver = new ChromeDriver();
+	  driver = new ChromeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testProfile() throws Exception {
-	  driver.get("http://royalhunter.ddns.net:8080/webproject/SignIn.jsp");
-	    driver.findElement(By.linkText("Login")).click();
-	    driver.findElement(By.id("email")).click();
-	    driver.findElement(By.id("email")).clear();
-	    driver.findElement(By.id("email")).sendKeys("mp@kids.net");
-	    driver.findElement(By.id("password")).clear();
-	    driver.findElement(By.id("password")).sendKeys("mariepop");
-	    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
-	    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
-	    driver.findElement(By.xpath("//input[@value='Submit']")).click();
-    driver.findElement(By.linkText("Profile")).click();
-    driver.findElement(By.linkText("Auxilium")).click();
+  public void testRequestItemID() throws Exception {
+    driver.get("http://localhost:8080/webproject/LogOut");
+    driver.findElement(By.linkText("Login")).click();
+    driver.findElement(By.id("email")).click();
+    driver.findElement(By.id("email")).clear();
+    driver.findElement(By.id("email")).sendKeys("o@live.com");
+    driver.findElement(By.id("password")).click();
+    driver.findElement(By.id("password")).clear();
+    driver.findElement(By.id("password")).sendKeys("password");
+    driver.findElement(By.xpath("//input[@value='Submit']")).click();
+    driver.findElement(By.linkText("Listings")).click();
+    driver.findElement(By.linkText("View")).click();
+    driver.findElement(By.linkText("Request")).click();
+    driver.findElement(By.id("id")).click();
+    driver.findElement(By.id("id")).clear();
+    driver.findElement(By.id("id")).sendKeys("5");
+    driver.findElement(By.xpath("//input[@value='Submit']")).click();
   }
 
   @After

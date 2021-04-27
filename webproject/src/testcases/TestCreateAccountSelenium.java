@@ -35,7 +35,7 @@ public class TestCreateAccountSelenium {
     driver.findElement(By.name("lastName")).clear();
     driver.findElement(By.name("lastName")).sendKeys("Tester");
     driver.findElement(By.name("email")).clear();
-    driver.findElement(By.name("email")).sendKeys("tester@test.edu");
+    driver.findElement(By.name("email")).sendKeys("tester3@test.edu");
     driver.findElement(By.name("age")).clear();
     driver.findElement(By.name("age")).sendKeys("27");
     driver.findElement(By.name("organization")).clear();
@@ -47,7 +47,7 @@ public class TestCreateAccountSelenium {
     driver.findElement(By.id("input")).clear();
     driver.findElement(By.id("input")).sendKeys("pass");
     driver.findElement(By.xpath("//input[@value='Submit']")).click();
-	Thread.sleep(4000);
+	Thread.sleep(2000);
   }
 
   @After
